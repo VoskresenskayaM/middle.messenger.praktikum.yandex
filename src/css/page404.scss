@@ -1,0 +1,20 @@
+@import 'variables.scss';
+   
+   .page404__block {
+    @include putColumnCenter;
+    width: 100%;
+    .page404__title{
+        @include font(40px, 500, 40px, #1E1E1E);
+        margin: 280px 0 0 0;
+    }
+    .page404__message{
+        @include font(20px, 500, 20px, #1E1E1E);
+        margin: 20px 0 0 0;
+    }
+    .page404__link{
+        @include font(11px, 500, 11px, #3369F3);
+        margin: 69px 0 0 0;
+        text-decoration: none;
+    }
+    }
+  

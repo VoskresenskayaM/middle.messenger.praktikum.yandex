@@ -1,0 +1,6 @@
+
+@import 'variables.scss';
+.main__index{
+    @include putColumnCenter; 
+    width: 100%;
+}

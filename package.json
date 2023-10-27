@@ -1,0 +1,22 @@
+{
+  "name": "mess",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "start": "vite build && vite preview",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "sass": "^1.69.4",
+    "vite": "^4.4.5"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.8",
+    "hbs": "^4.2.0",
+    "normalize.css": "^8.0.1",
+    "vite-plugin-handlebars": "^1.6.0"
+  }
+}

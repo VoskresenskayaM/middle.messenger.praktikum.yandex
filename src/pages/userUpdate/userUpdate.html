@@ -1,0 +1,19 @@
+{{#> layouts/page title="user update"}}
+<section class="user">
+    {{> backPanel/backPanel }}
+    <div class="user__register-form-block">
+        {{> notUserFoto/notUserFoto }}
+        {{#userMainForm}}
+        {{> input/input inputName="Почта" inputClass="email" type="email" inputValue=currentUser.email}}
+        {{> input/input inputName="Логин" inputClass="login" type="text" inputValue=currentUser.login}}
+        {{> input/input inputName="Имя" inputClass="first_name" type="text" inputValue=currentUser.first_name}}
+        {{> input/input inputName="Фамилия" inputClass="second_name" type="text" inputValue=currentUser.second_name}}
+        {{> input/input inputName="Имя в чате" inputClass="display_name" type="text"
+        inputValue=currentUser.display_name}}
+        {{> input/input inputName="Телефон" inputClass="phone" type="tel" inputValue=currentUser.phone}}
+        {{> button/button text="Сохранить" type="submit"}}
+        {{/userMainForm}}
+    </div>
+</section>
+<script type="module" src="/src/pages/userUpdate/userUpdate.js"></script>
+{{/layouts/page }}
