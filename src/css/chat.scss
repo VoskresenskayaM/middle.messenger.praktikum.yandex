@@ -235,6 +235,7 @@
                 flex-direction: row;
                 width: 100%;
                 justify-content: flex-start;
+
                 .feed__contact-message-text {
                     width: 43%;
                     background-color: $panel-color;
@@ -260,8 +261,6 @@
             }
         }
     }
-
-
 
     .feed__footer {
         @include putСenter;
@@ -294,7 +293,4 @@
         }
 
     }
-
-
-
 }
