@@ -7,6 +7,12 @@
 
 - проект настроен с помощью Vite
 - сверстаны основные страницы с помощью шаблонизатора Heandalbars
+   [Логин](https://sage-bunny-58317b.netlify.app/src/pages/login/login)
+   [Авторизация](https://sage-bunny-58317b.netlify.app/src/pages/register/register)
+   [Чаты](https://sage-bunny-58317b.netlify.app/src/pages/chats/chats)
+   [Профиль](https://sage-bunny-58317b.netlify.app/src/pages/userprofile/userprofile)
+   [404](https://sage-bunny-58317b.netlify.app/src/pages/page404/page404)
+   [500](https://sage-bunny-58317b.netlify.app/src/pages/page505/page505)
 - в качестве препроцессора использовался SASS
 - выполнен деплой на Netlify
 
@@ -14,6 +20,8 @@
 
 -[макет](https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=0%3A1) 
 -[Netlify](https://sage-bunny-58317b.netlify.app)
+
+
 
 ## Запуск проекта
 
