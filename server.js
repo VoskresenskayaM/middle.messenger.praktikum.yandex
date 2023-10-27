@@ -3,7 +3,7 @@ import { fileURLToPath } from 'url';
 import { dirname, resolve } from 'path';
 
 async function createServer() {
-    
+
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = dirname(__filename);
 
