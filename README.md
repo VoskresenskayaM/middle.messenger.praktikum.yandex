@@ -22,10 +22,10 @@
 - [Netlify](https://sage-bunny-58317b.netlify.app)
 
 
-
 ## Запуск проекта
 
 - npm i — установка зависимостей,
 - npm run start — сборка и запуск,
 - npm run dev — запуск vite dev-сервера для разработки
+- npm run server - сборка и запуск на express
 - запускать на 3000 порту

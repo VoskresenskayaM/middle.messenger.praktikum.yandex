@@ -6,7 +6,7 @@
 }
 
 .login__form-title {
-    @include font(20px, 500, 20px, #1E1E1E);
+    @include font(20px, 500, 20px, $text-dark-gray);
     margin: 50px 0 0 0;
 }
 
@@ -32,23 +32,21 @@
 }
 
 .login__label {
-    @include font(9px, 500, 9px, #999999);
+    @include font(9px, 500, 9px, $text-light-gray);
     margin-top: 7px;
 }
 
 .login__input {
     width: 100%;
-    @include font(13px, 500, 13px, #1E1E1E);
+    @include font(13px, 500, 13px, $text-dark-gray);
     @include deleteBorderInput;
     text-align: left;
     min-height: 28px;
-    border-bottom: 1px solid #3369F3;
+    border-bottom: 1px solid $blue;
 }
 
 .login__input-error {
-    @include font(8px, 500, 8px, #FF2F2F);
-    /*margin-top: 7px;
-    margin-bottom: 7px;*/
+    @include font(8px, 500, 8px, $error-red);
     width: 100%;
 }
 
@@ -58,6 +56,6 @@
 
 .login__question {
     text-decoration: none;
-    @include font(11px, 500, px, #3369F3);
+    @include font(11px, 500, px, $blue);
     margin: 14px 0 40px 0;
 }

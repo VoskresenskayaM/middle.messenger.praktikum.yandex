@@ -1,4 +1,4 @@
-{{#> layouts/page title="user profile"}}
+{{#> layouts/page title="user profile"  scriptPath="/src/pages/userProfile/userProfile.js"}}
 <section class="user">
   {{> backPanel/backPanel }}
   <div class="user__register-form-block">
@@ -33,5 +33,4 @@
 {{> popupInfo/popupInfo messageText="Загрузите файл" doText="Выбрать файл на компьютуре" buttonText="Поменять"}}
 {{/userPopup}}
 {{/if }}
-<script type="module" src="/src/pages/userProfile/userProfile.js"></script>
 {{/layouts/page}}

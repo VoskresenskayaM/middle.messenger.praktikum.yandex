@@ -38,7 +38,7 @@
         min-width: 130px;
         min-height: 130px;
         border-radius: 75px;
-        background-color: #000000;
+        background-color: $black;
         opacity: 0;
         transition: $transitionOpasyty;
         @include putСenter;
@@ -46,7 +46,7 @@
         .user__change-text {
             max-width: 64px;
             text-align: center;
-            @include font(13px, 500, 14px, #FFFFFF);
+            @include font(13px, 500, 14px, $white);
         }
 
         &:hover {
@@ -56,7 +56,7 @@
 }
 
 .user__name {
-    @include font(16px, 600, 16px, #1E1E1E);
+    @include font(16px, 600, 16px, $text-dark-gray);
     margin: 21px 0 0 0;
 }
 
@@ -69,8 +69,8 @@
 
 .user__form-button {
     border-radius: 8px;
-    background-color: #3369F3;
-    @include font(13px, 500, 13px, #FFFFFF);
+    background-color: $blue;
+    @include font(13px, 500, 13px, $white);
     border: none;
     width: 280px;
     height: 37px;
@@ -87,11 +87,11 @@
 
     .user__input {
         @include deleteBorderInput;
-        @include font(13px, 500, 13px, #999999);
+        @include font(13px, 500, 13px, $text-light-gray);
     }
 
     .user__input-name {
-        @include font(13px, 500, 13px, #1E1E1E);
+        @include font(13px, 500, 13px, $text-dark-gray);
         margin: 10px 0;
     }
 }
@@ -107,11 +107,11 @@
     }
 
     .user__change {
-        @include font(13px, 500, 13px, #3369F3);
+        @include font(13px, 500, 13px, $blue);
     }
 
     .user__change-exit {
-        color: #FF0000;
+        color: $error-red;
     }
 }
 
@@ -127,18 +127,18 @@
     .user__popup-window {
         min-width: 340px;
         min-height: 257px;
-        background-color: #FFFFFF;
+        background-color: $white;
         border-radius: 12px;
         @include putColumnCenter;
     }
 
     .user__popup-message {
-        @include font(15px, 500, 20px, #1E1E1E);
+        @include font(15px, 500, 20px, $text-dark-gray);
         margin: 40px 0 0 0;
     }
 
     .user__popup-do {
-        @include font(12px, 500, 16px, #3369F3);
+        @include font(12px, 500, 16px, $blue);
         margin: 43px 0 0 0;
         text-decoration: underline  ;
         text-align: center;

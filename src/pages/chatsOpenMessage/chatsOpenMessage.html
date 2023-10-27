@@ -1,4 +1,4 @@
-{{#> layouts/page title="chats"}}
+{{#> layouts/page title="chats" scriptPath="/src/pages/chatsOpenMessage/chatsOpenMessage.js"}}
 <section class="chat">
     <div class="chats">
         <div class="chats__profile-link-block">
@@ -13,8 +13,7 @@
         <div class="chats__block">
             <!--Новое сообщение-->
             <div class="chats__chat">
-                <!--<img class="chats__chat-img" src="#" />-->
-                <div class="chats__chat-img"></div>
+                <div class="chats__chat-img"><img class="chats__chat-img" src="/static/images/person.svg" /></div>
                 <div class="chats__chat-main-block">
                     <div class="chats__chat-info-block">
                         <div class="chats__chat-info-name">Андрей</div>
@@ -29,8 +28,7 @@
             </div>
             <!--Отправленное сообщение-->
             <div class="chats__chat">
-                <!--<img class="chats__chat-img" src="#" />-->
-                <div class="chats__chat-img"></div>
+                <div class="chats__chat-img"><img class="chats__chat-img" src="/static/images/person.svg" /></div>
                 <div class="chats__chat-main-block">
                     <div class="chats__chat-info-block">
                         <div class="chats__chat-info-name">Иван</div>
@@ -45,8 +43,7 @@
             <!--Открытое сообщение-->
             <div class="chats__chat-open-main-block">
                 <div class="chats__chat-open">
-                    <!--<img class="chats__chat-img" src="#" />-->
-                    <div class="chats__chat-img  chats__chat-img_open"></div>
+                    <div class="chats__chat-img  chats__chat-img_open"><img class="chats__chat-img" src="/static/images/person.svg" /></div>
                     <div class="chats__chat-main-block  chats__chat-main-block_open">
                         <div class="chats__chat-info-block">
                             <div class="chats__chat-info-name">Костя</div>
@@ -71,8 +68,7 @@
             </div>
             <!--Прочитанное сообщение-->
             <div class="chats__chat">
-                <!--<img class="chats__chat-img" src="#" />-->
-                <div class="chats__chat-img"></div>
+                <div class="chats__chat-img"><img class="chats__chat-img" src="/static/images/person.svg" /></div>
                 <div class="chats__chat-main-block">
                     <div class="chats__chat-info-block">
                         <div class="chats__chat-info-name">Костя</div>
@@ -131,5 +127,5 @@
     </div>
 
 </section>
-<script type="module" src="/src/pages/chatsOpenMessage/chatsOpenMessage.js"></script>
+<!--<script type="module" src="/src/pages/chatsOpenMessage/chatsOpenMessage.js"></script>-->
 {{/layouts/page}}

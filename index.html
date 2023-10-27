@@ -1,14 +1,9 @@
-<!doctype html>
-<html lang="ru">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Messenger</title>
-</head>
 
-<body>
-  <div class="main__index">
+
+
+    {{#> layouts/page title="index"  scriptPath="/main.js"}}
+    <div class="main__index">
     <h1>Index</h1> </br>
     <a href="/src/pages/login/login.html">login</a> </br>
     <a href="/src/pages/register/register.html">register</a> </br>
@@ -20,6 +15,4 @@
     <a href="/src/pages/page404/page404.html">404</a> </br>
     <a href="/src/pages/page505/page505.html">505</a> </br>
   </div>
-  <script type="module" src="/main.js"></script>
-</body>
-</html>
+  {{/layouts/page}}
