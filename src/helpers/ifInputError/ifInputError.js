@@ -1,5 +1,5 @@
 export default function ifInputError(error, options) {
-    if(error) {
+    if (error) {
         return options.fn(this)
     }
     else {
