@@ -1,0 +1,26 @@
+{{#> layouts/page title="login"  scriptPath="/src/pages/login/login.js"}}
+<section class="login">
+    <div class="login__form-block">
+        {{> formTitle/formTitle title="Вход"}}
+        {{#regForm}}
+        {{> inputReg/inputReg type="text" label="Логин" inputName="login"}}
+
+        {{# ifInputError isError}}<!--isError в context в config-->
+        {{> inputError/inputError error="Неверный логин" fieldName="login" }}
+        {{else}}
+        {{> inputErrorInactive/inputErrorInactive error="Неверный логин" fieldName="login" }}
+        {{/ifInputError}}
+        {{> inputReg/inputReg type="password" label="Пароль" inputName="password"}}
+        {{# ifInputError isError}}
+        {{> inputError/inputError error="Неверный пароль" fieldName="password" }}
+        {{else}}
+        {{> inputErrorInactive/inputErrorInactive error="Неверный пароль" fieldName="password" }}
+        {{/ifInputError}}
+
+        {{> button/button text="Сохранить" type="submit"}}
+        {{/regForm}}
+        <a class="login__question" href="/src/pages/register/register.html">Нет аккаута?</a>
+    </div>
+</section>
+<!--<script type="module" src="/src/pages/login/login.js"></script>-->
+{{/layouts/page}}

@@ -1,0 +1,65 @@
+@import 'normalize.css';
+@import 'variables.scss';
+@import '/static/fonts/fonts.css';
+@import 'user.scss';
+@import 'page404.scss';
+@import 'chat.scss';
+@import 'login.scss';
+@import 'mainIndex.scss'; //только для этапа верстки потом удалить
+
+body {
+  font-family: 'Inter', 'SuisseIntl', 'Arial', 'Helvetica', sans-serif;
+  ;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  input::-webkit-input-placeholder {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  input::-moz-placeholder {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  input:-moz-placeholder {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  input:-ms-input-placeholder {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  input:focus::-webkit-input-placeholder {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  input:focus::-moz-placeholder {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  input:focus:-moz-placeholder {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  input:focus:-ms-input-placeholder {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  background-color: $white;
+  color: $black;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: relative;
+}

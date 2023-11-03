@@ -1,0 +1,40 @@
+$panel-color: #FBFBFB;
+$back-panel-dark: #EFEFEF;
+$background-light: #E4EDFD;
+$back-panel-width: 64px;
+$text-light-gray: #999999;
+$text-dark-gray: #1E1E1E;
+$white: #ffffff;
+$blue: #3369F3;
+$black: #000000;
+$error-red: #FF2F2F;
+$border-bottom-gray-line: 1px #EAEAEA solid;
+$transitionOpasyty: 0.5s ease opacity;
+
+@mixin putСenter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin putColumnCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@mixin font ($fontS, $fontW, $fontH, $color) {
+  font-size: $fontS;
+  font-weight: $fontW;
+  line-height: $fontH;
+  color: $color;
+}
+
+@mixin deleteBorderInput {
+  outline: none;
+  background: transparent;
+  border: none;
+  text-align: right;
+}
