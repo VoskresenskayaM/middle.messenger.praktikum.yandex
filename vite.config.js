@@ -1,8 +1,7 @@
-/*import { handlebars } from 'hbs';*/
+
 import { defineConfig } from 'vite'
 import { resolve } from 'path';
 import handlebars from 'vite-plugin-handlebars';
-/*import handlebars from '@vituum/vite-plugin-handlebars'*/
 import userMainForm from './src/helpers/userMainForm/userMainForm';
 import userPopup from './src/helpers/userPopup/userPopup';
 import regForm from './src/helpers/regForm/regForm';

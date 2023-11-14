@@ -1,9 +1,10 @@
 {{#> layouts/page title="user profile"  scriptPath="/src/pages/userProfile/userProfile.js"}}
-<section class="user">
-  {{> backPanel/backPanel }}
-  <div class="user__register-form-block">
-    {{> notUserFoto/notUserFoto }}
-    {{> userName/userName name=currentUser.display_name}}
+ <!--<section class="user">-->
+  <!--{{> backPanel/backPanel }}-->
+
+   <!--<div class="user__register-form-block">-->
+    <!-- {{> notUserFoto/notUserFoto }}-->
+    <!--{{> userName/userName name=currentUser.display_name}}
     {{#userMainForm}}
     {{> inputDisabled/inputDisabled inputName="Почта" inputClass="email" type="email" inputValue=currentUser.email}}
     {{> inputDisabled/inputDisabled inputName="Логин" inputClass="login" type="text" inputValue=currentUser.login}}
@@ -25,9 +26,9 @@
       <a class="user__link" href="/src/pages/login/login.html">
         <p class="user__change user__change-exit">Выйти</p>
       </a>
-    </div>
-  </div>
-</section>
+    </div>-->
+ <!-- </div>
+</section>-->
 {{#if isOpenPopup}} <!--isOpenPopup в context в config-->
 {{#userPopup}}
 {{> popupInfo/popupInfo messageText="Загрузите файл" doText="Выбрать файл на компьютуре" buttonText="Поменять"}}

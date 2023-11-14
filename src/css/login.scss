@@ -48,10 +48,11 @@
 .login__input-error {
     @include font(8px, 500, 8px, $error-red);
     width: 100%;
+    opacity: 0;
 }
 
-.login__input-error-inactive {
-    opacity: 0;
+.login__input-error-active {
+    opacity: 1;
 }
 
 .login__question {

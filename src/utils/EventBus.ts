@@ -1,9 +1,22 @@
+
+type EventBusHeandle<A extends unknown = any> = (
+    ...args: Partial<Array<A>>
+  ) => void;
+
+type EventBusListeners = Record<string, Array<EventBusHeandle>>;
+
+export interface IEventBus {
+    on(event: string, callback: EventBusHeandle): void;
+    off(event: string, callback: EventBusHeandle): void;
+    emit(event: string, ...args: Array<unknown>): void;
+  }
+
 export default class EventBus {
-   
+    private listeners: EventBusListeners;
     constructor() {
         this.listeners = {};
     }
-    on(event, callback) {
+    on(event:string, callback:EventBusHeandle) {
         if (!this.listeners[event]) {
             this.listeners[event] = [];
         }
@@ -11,7 +24,7 @@ export default class EventBus {
         this.listeners[event].push(callback);
     }
 
-    off(event, callback) {
+    off(event:string, callback: EventBusHeandle) {
         if (!this.listeners[event]) {
             throw new Error(`Нет события: ${event}`);
           }
@@ -21,7 +34,7 @@ export default class EventBus {
           );
 
     }
-    emit(event, ...args) {
+    emit(event:string, ...args:Array<unknown>) {
         if (!this.listeners[event]) {
                 throw new Error(`Нет события: ${event}`);
         }

@@ -77,6 +77,9 @@
     margin-top: 60px;
     cursor: pointer;
 }
+.user__form-button_inactiv {
+    background-color: $text-light-gray;
+}
 
 .user__input-block {
     display: flex;
@@ -94,6 +97,43 @@
         @include font(13px, 500, 13px, $text-dark-gray);
         margin: 10px 0;
     }
+}
+
+.user__input-error-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    
+    width: 100%;
+   
+
+    .user__input {
+        @include deleteBorderInput;
+        @include font(13px, 500, 13px, $text-light-gray);
+    }
+
+    .user__input-name {
+        @include font(13px, 500, 13px, $text-dark-gray);
+        margin: 0px 0 10px 0;
+    }
+}
+
+.user__input-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: $border-bottom-gray-line;
+}
+
+.user__input-error{
+    @include font(8px, 500, 8px, $error-red);
+    width: 100%;
+    opacity: 0;
+}
+
+.user__input-error-active {
+    opacity: 1;
 }
 
 .user__change-block {

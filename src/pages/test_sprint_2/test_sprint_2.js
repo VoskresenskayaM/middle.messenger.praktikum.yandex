@@ -1,7 +1,6 @@
 import '../../css/style.scss';
-import { render } from '../../utils/renderDOM'
-
 import ButtonTest from '../../components/test_sprint_2_button/ButtonTest';
+import { render } from '../../utils/renderDOM';
 
 const button = new ButtonTest({
     text: "Click me",
@@ -13,8 +12,13 @@ const button = new ButtonTest({
       // Названия события точно такие же, как и у первого аргумента addEventListener: 
       // click, mouseEnter, ...
       click: event => {
-        console.log(event);
+        console.log("button");
       },
     },
   });
-render("#app", button);
+
+  render("#app", button);
+
+
+
+

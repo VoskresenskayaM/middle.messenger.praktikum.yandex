@@ -1,1 +1,3 @@
-export const source = `{{input1}}`
+export const source = `{{{inputLogin}}}
+{{{inputPassword}}}
+{{{button}}}`
