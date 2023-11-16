@@ -36,4 +36,3 @@
 - npm run lintFix - Исправление  файлов линтером
 - npm run stylelint - Проверка sass файлов style линтером
 - npm run stylelint:fix - Исправление sass файлов style линтером
-
