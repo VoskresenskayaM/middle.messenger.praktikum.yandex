@@ -9,37 +9,37 @@ $blue: #3369F3;
 $black: #000;
 $error-red: #FF2F2F;
 $border-bottom-gray-line: 1px #EAEAEA solid;
-$transitionOpasyty: 0.5s ease opacity;
+$transitionopasyty: 0.5s ease opacity;
 
-@mixin putСenter {
+@mixin putcenter {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 
-@mixin putColumnCenter {
+@mixin putcolumncenter {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
 }
 
-@mixin font ($fontS, $fontW, $fontH, $color) {
+@mixin font($fontS, $fontW, $fontH, $color) {
   color: $color;
   font-weight: $fontW;
   font-size: $fontS;
   line-height: $fontH;
 }
 
-@mixin deleteBorderInput {
+@mixin deleteborderinput {
   text-align: right;
   background: transparent;
   border: none;
   outline: none;
 }
 
-@mixin borderInputLine {
+@mixin borderinputline {
   text-align: left;
   border-bottom: 1px solid $blue;
 }

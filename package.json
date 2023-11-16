@@ -8,7 +8,7 @@
     "prebuild": "tsc --noEmit",
     "lint": "npx eslint \"src/**\" && tsc --noEmit",
     "lintFix": "eslint --fix --ext .js,.ts .",
-    "stylelint": "stylelint '**/*{.css,.scss}'",
+    "stylelint": "npx stylelint \"**/*.scss\"",
     "stylelint:fix": "stylelint '**/*{.css,.scss}' --fix",
     "start": "vite build && vite preview",
     "build": "vite build",
@@ -43,6 +43,7 @@
     "handlebars": "^4.7.8",
     "hbs": "^4.2.0",
     "normalize.css": "^8.0.1",
+    "stylelint-config-standard-scss": "^11.1.0",
     "uuid": "^9.0.1",
     "vite-plugin-handlebars": "^1.6.0"
   }

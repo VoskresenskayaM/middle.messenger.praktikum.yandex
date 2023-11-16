@@ -1,11 +1,11 @@
-@import 'normalize.scss';
-@import 'variables.scss';
-@import '/static/fonts/fonts.scss';
-@import 'user.scss';
-@import 'page404.scss';
-@import 'chat.scss';
-@import 'login.scss';
-@import 'mainIndex.scss';
+@import 'normalize';
+@import 'variables';
+@import '/static/fonts/fonts';
+@import 'user';
+@import 'page404';
+@import 'chat';
+@import 'login';
+@import 'mainIndex';
 
 
 body {
@@ -20,40 +20,10 @@ body {
     transition: opacity 0.3s ease;
   }
 
-  /*input::placeholder {
-    opacity: 1;
-    transition: opacity 0.3s ease;
-  }
-
-  input::placeholder {
-    opacity: 1;
-    transition: opacity 0.3s ease;
-  }
-
-  input::placeholder {
-    opacity: 1;
-    transition: opacity 0.3s ease;
-  }*/
-
   input:focus::placeholder {
     opacity: 0;
     transition: opacity 0.3s ease;
   }
-
-  /*input:focus::placeholder {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  input:focus::placeholder {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  input:focus::placeholder {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }*/
 }
 
 #app {

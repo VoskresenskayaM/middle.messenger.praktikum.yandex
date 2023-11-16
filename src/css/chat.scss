@@ -1,4 +1,4 @@
-@import 'variables.scss';
+@import 'variables';
 
 .chat {
     display: flex;
@@ -10,7 +10,7 @@
 .chats {
     min-width: 310px;
 
-    @include putColumnCenter;
+    @include putcolumncenter;
 
     background-color: $panel-color;
 }
@@ -52,7 +52,7 @@
     }
 
     .chats__search-input {
-        @include deleteBorderInput;
+        @include deleteborderinput;
 
         width: 90%;
         text-align: left;
@@ -160,11 +160,11 @@
     background-color: $blue;
     border-radius: 50%;
 
-    @include putСenter;
+    @include putcenter;
 }
 
 .feed {
-    @include putСenter;
+    @include putcenter;
 
     width: 100%;
 }
@@ -271,7 +271,7 @@
     }
 
     .feed__footer {
-        @include putСenter;
+        @include putcenter;
 
         gap: 10px;
         width: 95%;
@@ -292,7 +292,7 @@
                 background-color: $back-panel-dark;
                 border-radius: 30px;
 
-                @include deleteBorderInput;
+                @include deleteborderinput;
                 @include font(12px, 600, 12px, $text-light-gray);
             }
 
@@ -301,6 +301,5 @@
                 border: none;
             }
         }
-
     }
 }

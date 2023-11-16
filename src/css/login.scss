@@ -1,7 +1,7 @@
-@import 'variables.scss';
+@import 'variables';
 
 .login {
-    @include putСenter;
+    @include putcenter;
 
     margin: 0 auto;
 }
@@ -18,11 +18,11 @@
     border-radius: 12px;
     box-shadow: 0 0 7px rgb(0 0 0 / 20%);
 
-    @include putColumnCenter;
+    @include putcolumncenter;
 }
 
 .login__form {
-    @include putColumnCenter;
+    @include putcolumncenter;
 
     margin-top: 40px;
 }
@@ -47,8 +47,8 @@
     border-bottom: 1px solid $blue;
 
     @include font(13px, 500, 13px, $text-dark-gray);
-    @include deleteBorderInput;
-    @include borderInputLine
+    @include deleteborderinput;
+    @include borderinputline
 }
 
 .login__input-error {
