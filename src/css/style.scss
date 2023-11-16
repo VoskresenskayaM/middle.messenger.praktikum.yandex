@@ -5,61 +5,60 @@
 @import 'page404.scss';
 @import 'chat.scss';
 @import 'login.scss';
-@import 'mainIndex.scss'; //только для этапа верстки потом удалить
+@import 'mainIndex.scss';
+
 
 body {
-  font-family: 'Inter', 'SuisseIntl', 'Arial', 'Helvetica', sans-serif;
-  ;
+  color: $black;
+  font-family: Inter, SuisseIntl, Arial, Helvetica, sans-serif;
+  background-color: $white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  input::-webkit-input-placeholder {
+  input::placeholder {
     opacity: 1;
     transition: opacity 0.3s ease;
   }
 
-  input::-moz-placeholder {
+  /*input::placeholder {
     opacity: 1;
     transition: opacity 0.3s ease;
   }
 
-  input:-moz-placeholder {
+  input::placeholder {
     opacity: 1;
     transition: opacity 0.3s ease;
   }
 
-  input:-ms-input-placeholder {
+  input::placeholder {
     opacity: 1;
     transition: opacity 0.3s ease;
-  }
+  }*/
 
-  input:focus::-webkit-input-placeholder {
+  input:focus::placeholder {
     opacity: 0;
     transition: opacity 0.3s ease;
   }
 
-  input:focus::-moz-placeholder {
+  /*input:focus::placeholder {
     opacity: 0;
     transition: opacity 0.3s ease;
   }
 
-  input:focus:-moz-placeholder {
+  input:focus::placeholder {
     opacity: 0;
     transition: opacity 0.3s ease;
   }
 
-  input:focus:-ms-input-placeholder {
+  input:focus::placeholder {
     opacity: 0;
     transition: opacity 0.3s ease;
-  }
-
-  background-color: $white;
-  color: $black;
+  }*/
 }
 
 #app {
+  position: relative;
+  display: flex;
   width: 100vw;
   height: 100vh;
-  display: flex;
-  position: relative;
 }

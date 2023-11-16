@@ -2,24 +2,28 @@
 
 .login {
     @include putСenter;
+
     margin: 0 auto;
 }
 
 .login__form-title {
     @include font(20px, 500, 20px, $text-dark-gray);
-    margin: 50px 0 0 0;
+
+    margin: 50px 0 0;
 }
 
 .login__form-block {
     min-width: 340px;
     min-height: 450px;
     border-radius: 12px;
-    box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 7px rgb(0 0 0 / 20%);
+
     @include putColumnCenter;
 }
 
 .login__form {
     @include putColumnCenter;
+
     margin-top: 40px;
 }
 
@@ -33,20 +37,23 @@
 
 .login__label {
     @include font(9px, 500, 9px, $text-light-gray);
+
     margin-top: 7px;
 }
 
 .login__input {
     width: 100%;
-    @include font(13px, 500, 13px, $text-dark-gray);
-    @include deleteBorderInput;
-    text-align: left;
     min-height: 28px;
     border-bottom: 1px solid $blue;
+
+    @include font(13px, 500, 13px, $text-dark-gray);
+    @include deleteBorderInput;
+    @include borderInputLine
 }
 
 .login__input-error {
     @include font(8px, 500, 8px, $error-red);
+
     width: 100%;
     opacity: 0;
 }
@@ -56,7 +63,8 @@
 }
 
 .login__question {
+    margin: 14px 0 40px;
     text-decoration: none;
+
     @include font(11px, 500, px, $blue);
-    margin: 14px 0 40px 0;
 }

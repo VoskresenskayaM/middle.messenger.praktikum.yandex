@@ -1,10 +1,13 @@
 {
-    "extends": ["stylelint-config-standard-scss"],
-    "ignoreFiles": [
-      "dist/*"
-    ],
+    "extends": ["stylelint-config-standard",
+    "stylelint-config-rational-order"],
+ "plugins": [
+  "styleLint-order", "stylelint-scss"
+ ],
     "rules": {
+      "at-rule-no-unknown": null,
       "selector-class-pattern": null,
       "no-descending-specificity": null
     }
+    
   }
