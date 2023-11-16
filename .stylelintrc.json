@@ -1,9 +1,7 @@
 {
     "extends": ["stylelint-config-standard",
     "stylelint-config-rational-order"],
- "plugins": [
-  "styleLint-order", "stylelint-scss"
- ],
+ "plugins": [ "stylelint-scss"],
     "rules": {
       "at-rule-no-unknown": null,
       "selector-class-pattern": null,
