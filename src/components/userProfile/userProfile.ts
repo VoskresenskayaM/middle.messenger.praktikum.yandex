@@ -1,4 +1,4 @@
-import Block from '../../utils/Block';
+import { Block } from '../../utils/Block';
 import { source } from './source';
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
 
 export default class UserProfile extends Block {
   constructor(props: Props) {
-    super('section', props);
+    super('main', props);
   }
 
   render() {

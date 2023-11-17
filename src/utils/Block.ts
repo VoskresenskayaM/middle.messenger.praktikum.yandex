@@ -2,7 +2,7 @@ import { v4 as makeUUID } from 'uuid';
 import Handlebars from 'handlebars';
 import EventBus from './EventBus';
 
-export default class Block {
+export abstract class Block<Props extends Record<string, any> = any> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -10,7 +10,7 @@ export default class Block {
     FLOW_RENDER: 'flow:render',
   } as const;
 
-  public _props;
+  public _props : Props;
 
   private _children;
 
@@ -26,8 +26,8 @@ export default class Block {
 
   /* private _setUpdate = false; */
 
-  constructor(tagName:string, propsAndChildren = {}) {
-    const { children, props, lists } = this._getChildren(propsAndChildren);
+  constructor(tagName: string, propsAndChildren : Props) {
+    const { children, props, lists } = this._getChildren(propsAndChildren || {});
 
     this._eventBus = new EventBus();
     this._id = makeUUID();
@@ -86,8 +86,8 @@ export default class Block {
   }
 
   private _componentDidUpdate(
-    oldProps: Record<string, unknown>,
-    newProps: Record<string, unknown>,
+    oldProps: Props,
+    newProps: Props,
   ) {
     const response = this.componentDidUpdate(oldProps, newProps);
     if (!response) {
@@ -98,13 +98,13 @@ export default class Block {
 
   // Может переопределять пользователь, необязательно трогать
   protected componentDidUpdate(
-    oldProps: Record<string, unknown>,
-    newProps: Record<string, unknown>,
+    oldProps: Props,
+    newProps: Props,
   ) {
     return oldProps !== undefined && newProps !== undefined;
   }
 
-  public setProps = (nextProps: Record<string, any>) => {
+  public setProps = (nextProps: Props) => {
     if (!nextProps) {
       return;
     }
@@ -166,7 +166,7 @@ export default class Block {
     return this._element;
   }
 
-  protected _makePropsProxy(props: Record<string, any>) {
+  protected _makePropsProxy(props: Record<string, unknown>): Props {
     // Можно и так передать this
     // Такой способ больше не применяется с приходом ES6+
     const self = this;
@@ -185,11 +185,11 @@ export default class Block {
       deleteProperty() {
         throw new Error('Нет доступа');
       },
-    });
+    }) as Props;
   }
 
-  _getChildren(propsAndChildren : Record<string, any>):{ props: Record<string,
-    unknown>, children: Record<string, Block>, lists : Record<string, Array<Block>>} {
+  _getChildren(propsAndChildren : Props):{ props: Props,
+    children: Record<string, Block>, lists : Record<string, Array<Block>>} {
     const children : Record<string, Block> = {};
     const props : Record<string, unknown> = {};
     const lists : Record<string, Array<Block>> = {};
@@ -202,7 +202,7 @@ export default class Block {
       }
     });
 
-    return { children, props, lists };
+    return { children, props: props as Props, lists };
   }
 
   compile(template: string, props: any) {

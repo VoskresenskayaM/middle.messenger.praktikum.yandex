@@ -17,18 +17,66 @@ const title = new FormTitle({
 
 render('.login__form-block', title);
 
-const input = new InputReg({
+const inputEmail = new InputReg({
+  label: 'Почта',
+  type: 'email',
+  inputName: 'email',
+  reg: formErrorReg.email,
+  error: formErrorMessage.emailError,
+  attr: {
+    class: 'login__input-block',
+
+  },
+});
+
+const inputLogin = new InputReg({
   label: 'Логин',
   type: 'text',
   inputName: 'login',
-  reg: formErrorReg.email,
-  error: formErrorMessage.emailError,
+  reg: formErrorReg.login,
+  error: formErrorMessage.nameError,
   attr: {
     class: 'login__input-block',
   },
 });
 
-const input2 = new InputReg({
+const inputFirstname = new InputReg({
+  label: 'Имя',
+  type: 'text',
+  inputName: 'first_name',
+  reg: formErrorReg.first_name,
+  error: formErrorMessage.nameError,
+  attr: {
+    class: 'login__input-block',
+
+  },
+});
+
+const inputSecondname = new InputReg({
+  label: 'Фамилия',
+  type: 'text',
+  inputName: 'second_name',
+  reg: formErrorReg.second_name,
+  error: formErrorMessage.nameError,
+  attr: {
+    class: 'login__input-block',
+
+  },
+});
+
+const inputPhone = new InputReg({
+  label: 'Телефон',
+  type: 'tel',
+  inputName: 'phone',
+  reg: formErrorReg.phone,
+  error: formErrorMessage.phoneError,
+  attr: {
+    class: 'login__input-block',
+
+  },
+});
+
+const inputPassword = new InputReg({
   label: 'Пароль',
   type: 'password',
   inputName: 'password',
@@ -40,8 +88,20 @@ const input2 = new InputReg({
   },
 });
 
+const inputPassword2 = new InputReg({
+  label: 'Пароль (еще раз)',
+  type: 'password',
+  inputName: 'password',
+  reg: formErrorReg.password,
+  error: formErrorMessage.passwordError,
+  attr: {
+    class: 'login__input-block',
+
+  },
+});
+
 const button = new ButtonTest({
-  text: 'Сохранить',
+  text: 'Зарегистрироваться',
   attr: {
     class: 'user__form-button',
     type: 'submit',
@@ -63,8 +123,13 @@ const button = new ButtonTest({
 });
 
 const form = new RegForm({
-  inputLogin: input,
-  inputPassword: input2,
+  inputEmail,
+  inputLogin,
+  inputFirstname,
+  inputSecondname,
+  inputPhone,
+  inputPassword,
+  inputPassword2,
   button,
   attr: {
     class: 'login__form',

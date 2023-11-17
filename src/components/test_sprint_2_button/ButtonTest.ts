@@ -1,4 +1,4 @@
-import Block from '../../utils/Block';
+import { Block } from '../../utils/Block';
 import { source } from './source';
 
 type buttonHendle=(event: Event) => void;

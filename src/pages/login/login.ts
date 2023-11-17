@@ -17,30 +17,31 @@ const title = new FormTitle({
 
 render('.login__form-block', title);
 
-const input = new InputReg({
-  label: 'Логин',
-  type: 'text',
-  inputName: 'login',
+const inputEmail = new InputReg({
+  label: 'Почта',
+  type: 'email',
+  inputName: 'email',
   reg: formErrorReg.email,
   error: formErrorMessage.emailError,
   attr: {
     class: 'login__input-block',
+
   },
 });
 
-const input2 = new InputReg({
-  label: 'Пароль',
-  type: 'password',
-  inputName: 'password',
-  reg: formErrorReg.password,
-  error: formErrorMessage.passwordError,
+const inputLogin = new InputReg({
+  label: 'Логин',
+  type: 'text',
+  inputName: 'login',
+  reg: formErrorReg.login,
+  error: formErrorMessage.nameError,
   attr: {
     class: 'login__input-block',
   },
 });
 
 const button = new ButtonTest({
-  text: 'Сохранить',
+  text: 'Войти',
   attr: {
     class: 'user__form-button',
     type: 'submit',
@@ -62,8 +63,8 @@ const button = new ButtonTest({
 });
 
 const form = new RegForm({
-  inputLogin: input,
-  inputPassword: input2,
+  inputEmail,
+  inputLogin,
   button,
   attr: {
     class: 'login__form',

@@ -2,14 +2,15 @@ import { Block } from '../../utils/Block';
 
   interface Props {
     attr: Record<string, string>,
-    items: Block[]
+    links: Block[]
   }
-export default class ChatsArr extends Block {
+
+export default class List extends Block {
   constructor(props: Props) {
-    super('div', props);
+    super('ul', props);
   }
 
   render() {
-    return this.compile('{{{items}}}', this._props);
+    return this.compile('{{{links}}}', this._props);
   }
 }

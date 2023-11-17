@@ -2,11 +2,13 @@ import { Block } from '../../utils/Block';
 import { source } from './source';
 
 interface Props {
-  attr: Record<string, string>
+  title: string,
+  href: string
 }
-export default class ChatForm extends Block {
-  constructor(props:Props) {
-    super('form', props);
+
+export default class Link extends Block {
+  constructor(props: Props) {
+    super('li', props);
   }
 
   render() {
