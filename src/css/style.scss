@@ -33,7 +33,11 @@ body {
   height: 100vh;
 }
 
-.main__index-nav {
+.main__index {
+  @include putcolumncenter;
+}
+
+.main__index-list {
   display: flex;
   flex-direction: column;
   gap: 20px;

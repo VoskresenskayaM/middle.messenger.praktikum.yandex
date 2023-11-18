@@ -4,7 +4,7 @@ import Link from './src/components/link/link';
 import List from './src/components/list/list';
 
 const list = new List({
-  attr: { class: 'main__index-nav' },
+  attr: { class: 'main__index-list' },
   links: [
     new Link({
       title: 'login',
