@@ -29,3 +29,10 @@
 - npm run dev — запуск vite dev-сервера для разработки
 - npm run server - сборка и запуск на express
 - запускать на 3000 порту
+
+## Линтеры
+
+- npm run lint -  Проверка фалов линтером
+- npm run lintFix - Исправление  файлов линтером
+- npm run stylelint - Проверка sass файлов style линтером
+- npm run stylelint:fix - Исправление sass файлов style линтером

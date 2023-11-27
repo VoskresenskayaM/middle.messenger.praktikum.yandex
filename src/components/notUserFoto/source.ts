@@ -1,0 +1,6 @@
+export const source = `<div class="user__not-foto-background">
+    <img class="user__not-foto" src="/static/images/not_foto.svg">
+</div>
+<div class="user__change-foto">
+    <p class="user__change-text">Поменять аватар</p>
+</div>`;

@@ -2,39 +2,45 @@ $panel-color: #FBFBFB;
 $back-panel-dark: #EFEFEF;
 $background-light: #E4EDFD;
 $back-panel-width: 64px;
-$text-light-gray: #999999;
+$text-light-gray: #999;
 $text-dark-gray: #1E1E1E;
-$white: #ffffff;
+$white: #fff;
 $blue: #3369F3;
-$black: #000000;
+$black: #000;
 $error-red: #FF2F2F;
 $border-bottom-gray-line: 1px #EAEAEA solid;
-$transitionOpasyty: 0.5s ease opacity;
+$transitionopasyty: 0.5s ease opacity;
 
-@mixin putСenter {
+@mixin putcenter {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 
-@mixin putColumnCenter {
+@mixin putcolumncenter {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
 }
 
-@mixin font ($fontS, $fontW, $fontH, $color) {
-  font-size: $fontS;
-  font-weight: $fontW;
-  line-height: $fontH;
+@mixin font($fontS, $fontW, $fontH, $color) {
   color: $color;
+  font-weight: $fontW;
+  font-size: $fontS;
+  line-height: $fontH;
 }
 
-@mixin deleteBorderInput {
-  outline: none;
+@mixin deleteborderinput {
+  text-align: right;
   background: transparent;
   border: none;
-  text-align: right;
+  outline: none;
 }
+
+@mixin borderinputline {
+  text-align: left;
+  border-bottom: 1px solid $blue;
+}
+

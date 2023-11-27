@@ -1,65 +1,45 @@
-@import 'normalize.css';
-@import 'variables.scss';
-@import '/static/fonts/fonts.css';
-@import 'user.scss';
-@import 'page404.scss';
-@import 'chat.scss';
-@import 'login.scss';
-@import 'mainIndex.scss'; //только для этапа верстки потом удалить
+@import 'normalize';
+@import 'variables';
+@import '/static/fonts/fonts';
+@import 'user';
+@import 'page404';
+@import 'chat';
+@import 'login';
+@import 'mainIndex';
+
 
 body {
-  font-family: 'Inter', 'SuisseIntl', 'Arial', 'Helvetica', sans-serif;
-  ;
+  color: $black;
+  font-family: Inter, SuisseIntl, Arial, Helvetica, sans-serif;
+  background-color: $white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  input::-webkit-input-placeholder {
+  input::placeholder {
     opacity: 1;
     transition: opacity 0.3s ease;
   }
 
-  input::-moz-placeholder {
-    opacity: 1;
-    transition: opacity 0.3s ease;
-  }
-
-  input:-moz-placeholder {
-    opacity: 1;
-    transition: opacity 0.3s ease;
-  }
-
-  input:-ms-input-placeholder {
-    opacity: 1;
-    transition: opacity 0.3s ease;
-  }
-
-  input:focus::-webkit-input-placeholder {
+  input:focus::placeholder {
     opacity: 0;
     transition: opacity 0.3s ease;
   }
-
-  input:focus::-moz-placeholder {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  input:focus:-moz-placeholder {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  input:focus:-ms-input-placeholder {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  background-color: $white;
-  color: $black;
 }
 
 #app {
+  position: relative;
+  display: flex;
   width: 100vw;
   height: 100vh;
+}
+
+.main__index {
+  @include putcolumncenter;
+}
+
+.main__index-list {
   display: flex;
-  position: relative;
+  flex-direction: column;
+  gap: 20px;
+  list-style-type: none;
 }

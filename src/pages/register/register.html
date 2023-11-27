@@ -1,65 +1,6 @@
-{{#> layouts/page title="register" scriptPath="/src/pages/register/register.js"}}
-<section class="login">
+{{#> layouts/page title="register" scriptPath="/src/pages/register/register.ts"}}
+<main class="login">
     <div class="login__form-block">
-        {{> formTitle/formTitle title="Регистрация"}}
-        {{#regForm}}
-        {{> inputReg/inputReg type="email" label="Почта" inputName="email"}}
-        {{# ifInputError isError}}
-        {{> inputError/inputError error="Неверный формат почты" fieldName="email" }}
-        {{else}}
-        {{> inputErrorInactive/inputErrorInactive error="Неверный формат почты" fieldName="email" }}
-        {{/ifInputError}}
-
-        {{> inputReg/inputReg type="text" label="Логин" inputName="login"}}
-        {{# ifInputError isError}}
-        {{> inputError/inputError error="Логин должен содержать только буквы" fieldName="login" }}
-        {{else}}
-        {{> inputErrorInactive/inputErrorInactive error="Логин должен содержать только буквы" fieldName="first_name" }}
-        {{/ifInputError}}
-
-
-        {{> inputReg/inputReg type="text" label="Имя" inputName="first_name"}}
-        {{# ifInputError isError}}
-        {{> inputError/inputError error="Имя должно содержать только буквы" fieldName="first_name" }}
-        {{else}}
-        {{> inputErrorInactive/inputErrorInactive error="Имя должно содержать только буквы" fieldName="first_name" }}
-        {{/ifInputError}}
-
-        {{> inputReg/inputReg type="text" label="Фамилия" inputName="second_name"}}
-        {{# ifInputError isError}}
-        {{> inputError/inputError error="Имя должно содержать только буквы" fieldName="second_name" }}
-        {{else}}
-        {{> inputErrorInactive/inputErrorInactive error="Имя должно содержать только буквы" fieldName="second_name" }}
-        {{/ifInputError}}
-
-        {{> inputReg/inputReg type="tel" label="Телефон" inputName="phone"}}
-        {{# ifInputError isError}}
-        {{> inputError/inputError error="Неверный формат телефона" fieldName="phone" }}
-        {{else}}
-        {{> inputErrorInactive/inputErrorInactive error="Неверный формат телефона" fieldName="phone" }}
-        {{/ifInputError}}
-
-        {{> inputReg/inputReg type="tel" label="Пароль" inputName="password"}}
-        {{# ifInputError isError}}
-
-        {{> inputError/inputError error="Пароль должен содержать буквы цифры и символы" fieldName="password" }}
-        {{else}}
-        {{> inputErrorInactive/inputErrorInactive fieldName="password" }}
-        {{/ifInputError}}
-
-        {{> inputReg/inputReg type="tel" label="Пароль (еще раз)" inputName="password"}}
-        {{# ifInputError isError}}
-        {{> inputError/inputError error="Пароль должен содержать буквы цифры и символы" fieldName="password" }}
-        {{else}}
-        {{> inputErrorInactive/inputErrorInactive fieldName="password" }}
-        {{/ifInputError}}
-
-
-        {{> button/button text="Сохранить" type="submit"}}
-        {{/regForm}}
-        <a class="login__question" href="/src/pages/login/login.html">Войти</a>
     </div>
-
-</section>
-<!--<script type="module" src="/src/pages/login/login.js"></script>-->
+</main>
 {{/layouts/page}}
