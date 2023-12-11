@@ -1,11 +1,11 @@
 import { Block } from '../../utils/Block';
-import { StoreState, connect, store } from '../../utils/Store';
+import { StoreState, connect, store} from '../../utils/Store';
 import { ChatItem } from '../chatItem/chatItem';
 
 export class ChatsList extends Block {
   init() {
-    const { chats } = store.getState();
-    this._lists.items = chats.map((el) => new ChatItem({ attr: {}, text: el.title }));
+  
+    this._lists.items = this._props.chats.map((el) => new ChatItem({ attr: {}, text: el.title }));
   }
 
   render() {
