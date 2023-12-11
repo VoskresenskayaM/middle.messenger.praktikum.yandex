@@ -24,6 +24,7 @@ const formErrorReg = {
   login: '^(?=[A-Za-z0-9-_])(?=.*\\D)[A-Za-z0-9-_]{3,20}$',
   phone: '^((8|\\+7)[\\-\\s]?)?(\\(?\\d{3}\\)?[\\-\\s]?)?[\\d\\-\\s]{7,10}$',
   message: '\\w+$',
+  file: '^[A-Za-z]{1,8}\\.[A-Za-z]{1,3}$'
 };
 
 const formErrorMessage = {
@@ -31,6 +32,7 @@ const formErrorMessage = {
   passwordError: 'неверный формат пароля',
   nameError: 'неверный формат имени',
   phoneError: 'неверный формат телефона',
+  fileError: 'неверный формат файла',
 };
 
 const currentUser = {
@@ -42,10 +44,23 @@ const currentUser = {
   phone: '+7(909)-967-30-30',
 };
 
+const ROUTES = {
+  CHATS: '/chats',
+  CHAT: '/chat',
+  SIGNIN: '/signin',
+  SIGNUP: '/signup',
+  PROFILE: '/profile',
+  PROFILE_EDIT_DATA: '/edit-data',
+  PROFILE_EDIT_PASSWORD: '/edit-password',
+  ERROR: '/error',
+  NOT_FOUND: '/404',
+};
+
 export {
   regFormSettings,
   formErrorReg,
   formErrorMessage,
   currentUser,
   userFormSettings,
+  ROUTES,
 };

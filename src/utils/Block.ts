@@ -1,8 +1,9 @@
 import { v4 as makeUUID } from 'uuid';
 import Handlebars from 'handlebars';
 import EventBus from './EventBus';
+import FormValidator from './FormValidator';
 
-export abstract class Block<Props extends Record<string, any> = any> {
+export class Block<Props extends Record<string, any> = any> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -12,17 +13,19 @@ export abstract class Block<Props extends Record<string, any> = any> {
 
   public _props : Props;
 
-  private _children;
+  public _children;
 
   public _id;
 
-  private _lists;
+  protected _lists;
 
   private _element: HTMLElement | null = null;
 
-  private _meta;
+  protected _meta;
 
   private _eventBus;
+
+  protected _validator : FormValidator| null = null;
 
   /* private _setUpdate = false; */
 
@@ -43,17 +46,16 @@ export abstract class Block<Props extends Record<string, any> = any> {
   }
 
   private _registerEvents() {
-    this._eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
+    this._eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     this._eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     this._eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     this._eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
-  /* _init() {
+  protected init() {}
+
+  private _init() {
     this.init();
-    this._eventBus().emit(Block.EVENTS.FLOW_RENDER);
-  } */
-  protected init() {
     this._createResources();
     this._eventBus.emit(Block.EVENTS.FLOW_CDM);
   }
@@ -89,19 +91,16 @@ export abstract class Block<Props extends Record<string, any> = any> {
     oldProps: Props,
     newProps: Props,
   ) {
-    const response = this.componentDidUpdate(oldProps, newProps);
-    if (!response) {
+    if (oldProps !== undefined && newProps !== undefined) {
       return;
     }
+    this.componentDidUpdate();
     this._eventBus.emit(Block.EVENTS.FLOW_RENDER);
   }
 
   // Может переопределять пользователь, необязательно трогать
-  protected componentDidUpdate(
-    oldProps: Props,
-    newProps: Props,
-  ) {
-    return oldProps !== undefined && newProps !== undefined;
+  protected componentDidUpdate() {
+
   }
 
   public setProps = (nextProps: Props) => {
@@ -250,4 +249,6 @@ export abstract class Block<Props extends Record<string, any> = any> {
     if (!content) return;
     content.style.display = 'none';
   }
+
+  public validateForm() {}
 }

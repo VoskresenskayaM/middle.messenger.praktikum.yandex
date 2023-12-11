@@ -18,3 +18,6 @@ export default class ButtonTest extends Block {
     return this.compile(source, this._props);
   }
 }
+
+/*const mapStateToProps = (state: StoreState) => ({ ...state });
+export const PageLoginConnect = connect(mapStateToProps)(PageLogin);*/

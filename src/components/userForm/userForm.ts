@@ -18,6 +18,7 @@ export default class UserForm extends Block {
     super('form', props);
   }
 
+  
   render() {
     return this.compile(source, this._props);
   }

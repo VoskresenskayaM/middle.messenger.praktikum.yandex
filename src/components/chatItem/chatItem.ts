@@ -1,16 +1,22 @@
 import { Block } from '../../utils/Block';
 import { source } from './source';
+import { Chats } from '../../api/ChatApi';
+import { StoreState, connect } from '../../utils/Store';
 
-interface Props {
+/* type Props = {
   attr: Record<string, string>,
-  name: string,
-  time: string,
-  message: string,
-  count: string,
-}
+  chats: Chats
+  avatar?: string,
+  first_name?: string,
+  last_message?: string,
+  unread_count?: string,
+} */
+interface Props {
+  attr: Record <string, string>
+  text: string }
 
-export default class ChatItem extends Block {
-  constructor(props : Props) {
+export class ChatItem extends Block {
+  constructor(props: Props) {
     super('div', props);
   }
 
@@ -18,3 +24,6 @@ export default class ChatItem extends Block {
     return this.compile(source, this._props);
   }
 }
+
+/* function mapStateToProps(state: StoreState) { return { chats: state.chats }; }
+export const ChatItemConnect = connect(mapStateToProps)(ChatItem); */
