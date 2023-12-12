@@ -91,9 +91,9 @@ export class Block<Props extends Record<string, any> = any> {
     oldProps: Props,
     newProps: Props,
   ) {
-    if (oldProps !== undefined && newProps !== undefined) {
+    /* if (oldProps !== undefined && newProps !== undefined) {
       return;
-    }
+    } */
     this.componentDidUpdate();
     this._eventBus.emit(Block.EVENTS.FLOW_RENDER);
   }
@@ -103,7 +103,7 @@ export class Block<Props extends Record<string, any> = any> {
 
   }
 
-  public setProps = (nextProps: Props) => {
+  public setProps(nextProps: Props) {
     if (!nextProps) {
       return;
     }
@@ -114,7 +114,7 @@ export class Block<Props extends Record<string, any> = any> {
     if (Object.values(children).length) { Object.assign(this._children, children); }
 
     if (Object.values(lists).length) { Object.assign(this._lists, lists); }
-  };
+  }
 
   get element() {
     return this._element;

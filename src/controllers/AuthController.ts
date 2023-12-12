@@ -27,7 +27,7 @@ export class AuthController {
     try {
       await this._api.signin(data);
       await this.fetchUser();
-      router.go(ROUTES.PROFILE);
+      router.go(ROUTES.CHAT);
     } catch (error) {
       console.log(error);
       alert('Не удалось авторизоваться');

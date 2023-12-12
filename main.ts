@@ -11,7 +11,7 @@ import { PageRegister } from './src/pages/pageRegister/pageRegister';
 import { UserUpdate } from './src/pages/pageUserUpdate/pageUserUpdate';
 import { UserProfile } from './src/pages/pageUserProfile/pageUserProfile';
 import { UserUpdatePassword } from './src/pages/pageUpdatePassword/pageUpdatePassword';
-import { PageChat } from './src/pages/pageChat/pageChat';
+import { PageChatConnect } from './src/pages/pageChat/pageChat';
 import { PageChats } from './src/pages/pageChats/pageChats'
 import { BlockComponent } from './src/utils/Route';
 import { Block } from './src/utils/Block';
@@ -80,7 +80,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     .use(ROUTES.PROFILE, UserProfile)
     .use(ROUTES.PROFILE_EDIT_DATA, UserUpdate)
     .use(ROUTES.PROFILE_EDIT_PASSWORD, UserUpdatePassword)
-    .use(ROUTES.CHAT, PageChat)
+    .use(ROUTES.CHAT, PageChatConnect)
     .use(ROUTES.CHATS, PageChats)
 
 

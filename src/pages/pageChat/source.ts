@@ -5,8 +5,11 @@ export const source = `
     {{{chatList}}}
     {{{addChatForm}}}
 </div>
+{{#if activeChatId}}
 <div class="feed__messages">
-    <div class="feed__contact">
+
+
+ <div class="feed__contact">
         <div class="feed__contact-about">
             <div class="feed__contact-img"><img src="" /></div>
             <p class="feed__contact-name">Вадим</p>
@@ -39,5 +42,11 @@ export const source = `
             <button class="feed__form-submit" type="submit"><img src="/static/images/find.svg" /></button>
         </form>
     </div>
-
-</div>`
+</div>
+{{else}}
+<div class="feed__messages">
+<div class="feed">
+    <p class="feed__not_chats">Выберите чат чтобы отправить сообщение</p>
+    </div>
+</div>
+{{/if}}`

@@ -3,18 +3,20 @@ import { source } from './source';
 import { UserInputDisabled } from '../../components/userInputDisabled/userInputDisabled';
 import { StoreState, connect } from '../../utils/Store';
 
-
-interface Props {
-    attr: Record<string, string>,
-    emailInput:Block,
+type Props = {
+    attr: Record<string, string>
+    /* emailInput:Block,
     loginInput:Block,
     firstNameInput:Block,
     secondNameInput:Block,
     displayInput:Block,
-    phoneInput:Block,
+    phoneInput:Block, */
   }
 
+
 export class UserForm extends Block {
+ 
+
   init() {
     this._children.emailInput = new UserInputDisabled({
       attr: { class: 'user__input-block' },
@@ -60,5 +62,4 @@ export class UserForm extends Block {
 }
 
 function mapStateToProps(state: StoreState) { return { user: state.user }; }
-
 export const UserFormConnect = connect(mapStateToProps)(UserForm);

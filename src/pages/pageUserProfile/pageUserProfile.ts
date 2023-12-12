@@ -9,12 +9,10 @@ import { ROUTES } from '../../utils/Constants';
 import { NotUserFotoConnect } from '../../components/notUserFoto/notUserFoto';
 import { AuthController } from '../../controllers/AuthController';
 
-const authController =  new AuthController()
+const authController = new AuthController();
 
 export class UserProfile extends Block {
-  
   init() {
-
     this._meta.tagName = 'main';
     this._children.userFoto = new NotUserFotoConnect('div', {
       attr: {
@@ -25,7 +23,7 @@ export class UserProfile extends Block {
     this._props.attr = { class: 'user' };
     this._children.backPanel = new BackPanel({ attr: { class: 'user__back-panel' } });
     this._children.userName = new UserNameConnect('p', { attr: { class: 'user__name' } });
-    this._children.userForm = new UserFormConnect('form', { attr: { class: 'user__info-form' } });
+    this._children.userForm = new UserFormConnect('form', {attr: { class: 'user__info-form'}});
     this._children.changeUsetData = new ProfileLink({
       attr: { class: 'user__link', href: '#' },
       text: 'Изменить данные',

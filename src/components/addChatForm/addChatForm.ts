@@ -29,12 +29,12 @@ export class AddChatForm extends Block {
         type: 'submit',
       },
       events: {
-      click:  (event) => {
+      click: async (event) => {
           event.preventDefault();
           const input = document.querySelector('.login__input') as formType;
           if (!input) return;
-          chatController.createChat(input.value);
-          chatController.getChats({ offset: 0, limit: 15 });
+         await chatController.createChat(input.value);
+         await chatController.getChats({ offset: 0, limit: 15 });
         },
       },
     });

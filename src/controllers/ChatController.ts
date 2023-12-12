@@ -36,6 +36,7 @@ class ChatController {
 
   async initChat() {
     try {
+      
       const { user, activeChatId } = store.getState();
       const userId = user?.id;
       const chatId = activeChatId;

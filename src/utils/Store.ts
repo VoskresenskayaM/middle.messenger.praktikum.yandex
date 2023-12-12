@@ -19,7 +19,7 @@ export type StoreState = {
     user: User,
     chats: Chats[],
     messages: Record<number, MessageView[]>,
-    activeChatId: number,
+    activeChatId: number | null,
     activeChatUsers?: ChatsUser
   };
 
@@ -36,7 +36,7 @@ class Store extends EventBus {
       display_name: '',
 
     },
-    activeChatId: 0,
+    activeChatId: null,
     activeChatUsers: undefined,
     isAuth: false,
     messages: {},

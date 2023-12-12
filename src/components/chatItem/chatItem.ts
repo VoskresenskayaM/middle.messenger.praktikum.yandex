@@ -11,14 +11,18 @@ import { StoreState, connect } from '../../utils/Store';
   last_message?: string,
   unread_count?: string,
 } */
+type hendle = (event: Event) => Promise<void>
+
 interface Props {
   attr: Record <string, string>
-  text: string }
+  avatar: string,
+  title: string,
+  events: Record<string, hendle> }
 
 export class ChatItem extends Block {
-  constructor(props: Props) {
+  /*constructor(props: Props) {
     super('div', props);
-  }
+  }*/
 
   render() {
     return this.compile(source, this._props);
