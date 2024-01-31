@@ -19,7 +19,6 @@
       "noUnusedParameters": true,
       "sourceMap": true,
       "strictNullChecks": true,
-      /*"strictPropertyInitialization": false,*/
       "esModuleInterop": true
     },
     "include": ["src"]
