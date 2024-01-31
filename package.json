@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --open -d --force",
     "prebuild": "tsc --noEmit",
     "lint": "npx eslint \"src/**\" && tsc --noEmit",
     "lintFix": "eslint --fix --ext .js,.ts .",

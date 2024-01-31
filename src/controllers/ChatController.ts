@@ -1,10 +1,7 @@
-import {
-  ChatsApi, chatsApi, GetChatsData, ChatsUser, Chats,
-} from '../api/ChatApi';
-import { ROUTES } from '../utils/Constants';
-import { router } from '../utils/Router';
+import { ChatsApi, chatsApi, GetChatsData } from '../api/ChatApi';
+import { CHATS_URL } from '../utils/Constants';
 import { store } from '../utils/Store';
-import { User } from '../utils/Types';
+import { ChatWS } from '../utils/ChatSocket';
 
 class ChatController {
   private _api: ChatsApi;
@@ -19,6 +16,7 @@ class ChatController {
     } catch (error) {
       /* eslint-disable-next-line no-console */
       console.error(error);
+      // eslint-disable-next-line no-alert
       alert('Не удалось создать чаты');
     }
   }
@@ -30,17 +28,25 @@ class ChatController {
     } catch (error) {
       /* eslint-disable-next-line no-console */
       console.error(error);
+      // eslint-disable-next-line no-alert
       alert('Не удалось получить чаты');
     }
   }
 
   async initChat() {
     try {
-      
       const { user, activeChatId } = store.getState();
       const userId = user?.id;
       const chatId = activeChatId;
-      // работа с socket
+      const token = await this._api.getToken(chatId);
+      if (!token) return;
+      store.set('chatToken', token.token);
+      const WSClient = new ChatWS(
+        `${CHATS_URL}/${userId}/${chatId}/${token.token}`,
+      );
+      await WSClient.connect();
+      store.set('socket', WSClient);
+      WSClient.getOldMessages('0');
     } catch (error) {
     /* eslint-disable-next-line no-console */
       console.error(error);
@@ -53,6 +59,7 @@ class ChatController {
     } catch (error) {
       /* eslint-disable-next-line no-console */
       console.error(error);
+      // eslint-disable-next-line no-alert
       alert('Не удалось получить пользователя чата по ID');
     }
   }
@@ -60,16 +67,28 @@ class ChatController {
   async getUsersFromChat() {
     const { activeChatId } = store.getState();
     const chatId = activeChatId;
-
     try {
       if (chatId) {
         const chatsUser = await this._api.getUsersFromChat(chatId);
-        store.set('activeChatUsers', chatsUser);
+        store.set('chatUsers', chatsUser);
       }
+    } catch (error) {
+      /* eslint-disable-next-line no-console, no-alert */
+      alert('Не удалось установаить пользователя в чат');
+    }
+  }
+
+  async deleteChat(data: {chatId: number}) {
+    try {
+      await this._api.deleteChat(data);
+      const { chats } = store.getState();
+      const newChats = chats?.filter((item) => item.id !== data.chatId);
+      store.set('chats', newChats);
+      store.set('activeChatId', null);
+      store.set('chatUsers', []);
     } catch (error) {
       /* eslint-disable-next-line no-console */
       console.error(error);
-      alert('Не удалось установаить пользователя в чат');
     }
   }
 }

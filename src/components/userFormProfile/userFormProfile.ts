@@ -3,20 +3,7 @@ import { source } from './source';
 import { UserInputDisabled } from '../../components/userInputDisabled/userInputDisabled';
 import { StoreState, connect } from '../../utils/Store';
 
-type Props = {
-    attr: Record<string, string>
-    /* emailInput:Block,
-    loginInput:Block,
-    firstNameInput:Block,
-    secondNameInput:Block,
-    displayInput:Block,
-    phoneInput:Block, */
-  }
-
-
 export class UserForm extends Block {
- 
-
   init() {
     this._children.emailInput = new UserInputDisabled({
       attr: { class: 'user__input-block' },

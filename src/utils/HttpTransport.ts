@@ -1,3 +1,5 @@
+import { BASE_URL } from './Constants';
+
 function queryStringify(data: Record<string, unknown>) {
   const getQueryStr = Object.keys(data)
     .map((key) => `${key}=${data[key]}`)
@@ -27,7 +29,7 @@ type HTTPTransportMethod = <R, D = unknown>(
 ) => Promise<R>;
 
 export class HTTPTransport {
-  static BASE_URL = 'https://ya-praktikum.tech/api/v2';
+  static BASE_URL = BASE_URL;
 
   static RESOURCE_URL = `${HTTPTransport.BASE_URL}/resources`;
 

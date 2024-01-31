@@ -21,6 +21,16 @@
 - [макет](https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=0%3A1) 
 - [Netlify](https://sage-bunny-58317b.netlify.app)
 
+## Реализованный функционал
+
+- Валидация форм
+- Типизация
+- Компонентный подход
+- HTTP клиент
+- Линтинг
+- Подключен REST API
+- Авторизация, регистрация, изменение профиля, чаты
+- Подключен Websocket
 
 ## Запуск проекта
 

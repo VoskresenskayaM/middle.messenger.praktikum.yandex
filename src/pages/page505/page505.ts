@@ -16,7 +16,7 @@ const props : PropsPage404 = {
   attr: {
     class: 'page404__block',
   },
-}
+};
 
 export class Page505 extends Block {
   constructor() {

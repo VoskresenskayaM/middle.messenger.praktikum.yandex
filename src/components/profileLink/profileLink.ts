@@ -8,7 +8,7 @@ interface Props {
     events?: Record<string, buttonHendle>
   }
 
-export  class ProfileLink extends Block {
+export class ProfileLink extends Block {
   constructor(props: Props) {
     super('div', props);
   }

@@ -5,25 +5,11 @@ import { StoreState, connect } from '../../utils/Store';
 import { formErrorReg, formErrorMessage } from '../../utils/Constants';
 import ButtonTest from '../test_sprint_2_button/ButtonTest';
 import { ParseForm } from '../../utils/parseForm';
-import { User, formType } from '../../utils/Types';
+import { formType } from '../../utils/Types';
 import { userController } from '../../controllers/UserController';
 import { DataChangeProfile } from '../../api/UserApi';
 
-/*interface Props {
-    attr: Record<string, string>,
-    emailInput:Block,
-    loginInput:Block,
-    firstNameInput:Block,
-    secondNameInput:Block,
-    displayInput:Block,
-    phoneInput:Block,
-  }*/
-
 export class UserFormChangeProfile extends Block {
-  /* constructor(props:Props) {
-    super('form', props);
-  } */
-
   init() {
     this._children.emailInput = new UserInput({
       attr: {
@@ -109,7 +95,7 @@ export class UserFormChangeProfile extends Block {
           const changeProfileform = document.querySelector('.user__info-form') as formType;
           if (!changeProfileform) return;
           const parseForm = new ParseForm(changeProfileform);
-          userController.changeProfile(parseForm.getData() as DataChangeProfile)
+          userController.changeProfile(parseForm.getData() as DataChangeProfile);
         },
       },
     });

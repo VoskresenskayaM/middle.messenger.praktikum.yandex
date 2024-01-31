@@ -211,3 +211,15 @@
         cursor: pointer;
     }
 }
+
+.user__avatar {
+    margin-top: 40px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    display: none;
+}
+
+.user__avatar-active {
+    display: flex;
+}

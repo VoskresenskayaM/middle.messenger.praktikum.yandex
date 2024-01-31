@@ -28,7 +28,17 @@ export type MessageView = {
         time: string;
       };
 
+export type Message = {
+        chat_id: number;
+        content: string;
+        file: object | null;
+        id: number;
+        is_read: boolean;
+        time: string;
+        type: string;
+        user_id: number;
+      }
+
 export type Props = Record<string, any>;
 
 export type formType = HTMLFormElement | undefined;
-

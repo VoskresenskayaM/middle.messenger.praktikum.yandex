@@ -1,3 +1,6 @@
+const BASE_URL = 'https://ya-praktikum.tech/api/v2';
+const CHATS_URL = 'wss://ya-praktikum.tech/ws/chats';
+
 const regFormSettings = {
   formSelector: '.login__form',
   buttonSelector: '.user__form-button',
@@ -24,7 +27,7 @@ const formErrorReg = {
   login: '^(?=[A-Za-z0-9-_])(?=.*\\D)[A-Za-z0-9-_]{3,20}$',
   phone: '^((8|\\+7)[\\-\\s]?)?(\\(?\\d{3}\\)?[\\-\\s]?)?[\\d\\-\\s]{7,10}$',
   message: '\\w+$',
-  file: '^[A-Za-z]{1,8}\\.[A-Za-z]{1,3}$'
+  file: '^[A-Za-z]{1,8}\\.[A-Za-z]{1,3}$',
 };
 
 const formErrorMessage = {
@@ -45,8 +48,7 @@ const currentUser = {
 };
 
 const ROUTES = {
-  CHATS: '/chats',
-  CHAT: '/chat',
+  CHAT: '/',
   SIGNIN: '/signin',
   SIGNUP: '/signup',
   PROFILE: '/profile',
@@ -57,6 +59,8 @@ const ROUTES = {
 };
 
 export {
+  BASE_URL,
+  CHATS_URL,
   regFormSettings,
   formErrorReg,
   formErrorMessage,

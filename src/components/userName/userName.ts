@@ -2,11 +2,6 @@ import { Block } from '../../utils/Block';
 import { source } from './source';
 import { StoreState, connect } from '../../utils/Store';
 
-interface Props {
-  attr: Record<string, string>,
-  name: string
-}
-
 class UserName extends Block {
   render() {
     return this.compile(source, this._props);

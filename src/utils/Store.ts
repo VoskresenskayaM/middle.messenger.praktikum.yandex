@@ -3,9 +3,10 @@ import EventBus from './EventBus.ts';
 import { Block } from './Block.ts';
 import isEqual from './isEqual.ts';
 import { Chats, ChatsUser } from '../api/ChatApi.ts';
+import { ChatWS } from './ChatSocket.ts';
 
 import {
-  User, ChatView, MessageView, Props,
+  User, Message, Props,
 } from './Types.ts';
 
 import { set } from './set.ts';
@@ -18,9 +19,11 @@ export type StoreState = {
     isAuth: boolean,
     user: User,
     chats: Chats[],
-    messages: Record<number, MessageView[]>,
-    activeChatId: number | null,
-    activeChatUsers?: ChatsUser
+    activeChatId: number,
+    chatToken: string,
+    chatUsers: ChatsUser[],
+    messages: Message[],
+    socket: ChatWS | null
   };
 
 class Store extends EventBus {
@@ -36,12 +39,13 @@ class Store extends EventBus {
       display_name: '',
 
     },
-    activeChatId: null,
-    activeChatUsers: undefined,
+    activeChatId: 0,
+    chatUsers: [],
     isAuth: false,
-    messages: {},
     chats: [],
-    // номер выбранного чата
+    chatToken: '',
+    messages: [],
+    socket: null,
   };
 
   public set(path: string, newState: unknown) {
@@ -49,6 +53,7 @@ class Store extends EventBus {
       set(this.state, path, newState);
       this.emit(StoreEvents.Updated, this.getState());
     } catch (e) {
+      /* eslint-disable-next-line no-console */
       console.log(e);
     }
   }
@@ -68,7 +73,6 @@ export function connect(mapStateToProps: (state: StoreState) => Record<string, a
   return function (Component: typeof Block) : typeof Block {
     return class extends Component {
       constructor(tagName: string, propsAndChildren: Props) {
-        // сохраняем начальное состояние
         let state = mapStateToProps(store.getState());
         super(tagName, { ...propsAndChildren, ...state });
         store.on(StoreEvents.Updated, () => {

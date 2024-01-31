@@ -8,12 +8,13 @@ import RegFormQuestion from '../../components/regFormQuestion/regFormQuestion.ts
 import { AuthController } from '../../controllers/AuthController.ts';
 import { source } from './source.ts';
 import FormValidator from '../../utils/FormValidator.ts';
-import { regFormSettings, ROUTES, formErrorReg, formErrorMessage } from '../../utils/Constants.ts';
+import {
+  regFormSettings, ROUTES, formErrorReg, formErrorMessage,
+} from '../../utils/Constants.ts';
 import { router } from '../../utils/Router.ts';
 import { ParseForm } from '../../utils/parseForm.ts';
 import { DataSignin } from '../../api/AuthApi.ts';
 import { formType } from '../../utils/Types.ts';
-import { StoreState, connect } from '../../utils/Store.ts';
 
 interface PropsLogin {
   attr: Record<string, string>,
@@ -88,7 +89,7 @@ const question = new RegFormQuestion({
     click: (event) => {
       if (event.target) router.go(ROUTES.SIGNUP);
     },
-  }, 
+  },
 });
 
 const propsLogin : PropsLogin = {
@@ -114,5 +115,5 @@ export class PageLogin extends Block {
     return this.compile(source, this._props);
   }
 }
-/*const mapStateToProps = (state: StoreState) => ({ ...state });
-export const PageLoginConnect = connect(mapStateToProps)(PageLogin);*/
+/* const mapStateToProps = (state: StoreState) => ({ ...state });
+export const PageLoginConnect = connect(mapStateToProps)(PageLogin); */

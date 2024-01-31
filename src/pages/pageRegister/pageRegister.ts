@@ -5,12 +5,13 @@ import ButtonTest from '../../components/test_sprint_2_button/ButtonTest.ts';
 import RegForm from '../../components/regForm/regForm.ts';
 import InputReg from '../../components/inputReg/inputReg.ts';
 import FormValidator from '../../utils/FormValidator.ts';
-import { regFormSettings, formErrorReg, formErrorMessage, userFormSettings } from '../../utils/Constants.ts';
+import {
+  formErrorReg, formErrorMessage, userFormSettings, ROUTES,
+} from '../../utils/Constants.ts';
 import RegFormQuestion from '../../components/regFormQuestion/regFormQuestion.ts';
 import { AuthController } from '../../controllers/AuthController.ts';
 import { source } from './source.ts';
 import { connect, StoreState } from '../../utils/Store.ts';
-import { ROUTES } from '../../utils/Constants.ts';
 import { router } from '../../utils/Router.ts';
 import { ParseForm } from '../../utils/parseForm.ts';
 import { DataSignup } from '../../api/AuthApi.ts';
@@ -181,5 +182,5 @@ export class PageRegister extends Block {
     return this.compile(source, this._props);
   }
 }
-/*const mapStateToProps = (state: StoreState) => ({ ...state });
-export const PageRegisterConnect = connect(mapStateToProps)(PageRegister);*/
+const mapStateToProps = (state: StoreState) => ({ ...state });
+export const PageRegisterConnect = connect(mapStateToProps)(PageRegister);

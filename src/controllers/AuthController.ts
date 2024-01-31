@@ -18,7 +18,9 @@ export class AuthController {
       await this.fetchUser();
       router.go(ROUTES.PROFILE);
     } catch (error) {
+      /* eslint-disable-next-line no-console */
       console.log(error);
+      // eslint-disable-next-line no-alert
       alert('Не удалось зарегистрироваться');
     }
   }
@@ -27,9 +29,12 @@ export class AuthController {
     try {
       await this._api.signin(data);
       await this.fetchUser();
+      /* router.go(ROUTES.PROFILE); */
       router.go(ROUTES.CHAT);
     } catch (error) {
+      /* eslint-disable-next-line no-console */
       console.log(error);
+      // eslint-disable-next-line no-alert
       alert('Не удалось авторизоваться');
     }
   }
@@ -47,22 +52,24 @@ export class AuthController {
         second_name: '',
         first_name: '',
         display_name: '',
-    });
+      });
       router.go(ROUTES.SIGNIN);
     } catch (error) {
+      /* eslint-disable-next-line no-console */
       console.log(error);
       // eslint-disable-next-line no-alert
       alert('Не удалось авторизоваться');
     }
   }
 
-  private async fetchUser() {
+  async fetchUser() {
     // eslint-disable-next-line no-useless-catch
     try {
       const user = await this._api.read();
       store.set('user', user);
       store.set('isAuth', true);
     } catch (error) {
+      /* eslint-disable-next-line no-console */
       console.log(error);
     }
   }

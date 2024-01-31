@@ -1,6 +1,5 @@
 import { Block } from '../utils/Block';
 import { render } from '../utils/renderDOM';
-import { Props } from '../utils/Types';
 
 function isEqual(lhs : string, rhs: string): boolean {
   return lhs === rhs;
@@ -24,16 +23,15 @@ export class Route {
     this._props = props;
   }
 
-  /*navigate(pathname: string) {
+  /* navigate(pathname: string) {
     if (this.match(pathname)) {
       this._pathname = pathname;
       this.render();
     }
-  }*/
+  } */
 
   leave() {
     if (this._block) {
-      /*this._block.hide();*/
       this._block = null;
     }
   }

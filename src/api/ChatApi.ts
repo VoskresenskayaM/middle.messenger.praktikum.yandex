@@ -69,6 +69,10 @@ export class ChatsApi extends BaseApi {
     return this.http.delete('', { data });
   }
 
+  deleteChatUsers(data: {users: number [], chatId: number}) {
+    return this.http.delete('/users', { data });
+  }
+
   create = undefined;
 
   update = undefined;

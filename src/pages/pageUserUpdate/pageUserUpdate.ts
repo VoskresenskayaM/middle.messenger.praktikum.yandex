@@ -14,6 +14,12 @@ export class UserUpdate extends Block {
       attr: {
         class: 'user__not-foto-block',
       },
+      events: {
+        click: () => {
+          const foto = document.querySelector('.user__avatar') as Element;
+          foto.classList.add('user__avatar-active');
+        },
+      },
     });
 
     this._props.attr = { class: 'user' };
@@ -24,7 +30,7 @@ export class UserUpdate extends Block {
     );
     this._children.changeAvatarForm = new UserFormChangeAvatarConnect(
       'form',
-      { attr: { class: '' } },
+      { attr: { class: 'user__avatar' } },
     );
   }
 

@@ -19,5 +19,5 @@ export default class ButtonTest extends Block {
   }
 }
 
-/*const mapStateToProps = (state: StoreState) => ({ ...state });
-export const PageLoginConnect = connect(mapStateToProps)(PageLogin);*/
+/* const mapStateToProps = (state: StoreState) => ({ ...state });
+export const PageLoginConnect = connect(mapStateToProps)(PageLogin); */

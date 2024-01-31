@@ -18,7 +18,7 @@ export class UserUpdatePassword extends Block {
     this._children.backPanel = new BackPanel({ attr: { class: 'user__back-panel' } });
     this._children.userForm = new UserFormChangePasswordConnect(
       'form',
-      { attr: { class: 'user__info-form' }},
+      { attr: { class: 'user__info-form' } },
     );
   }
 

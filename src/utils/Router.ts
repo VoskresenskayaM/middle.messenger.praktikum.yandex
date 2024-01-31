@@ -1,5 +1,4 @@
-import { Route } from '../utils/Route';
-import { Block } from '../utils/Block';
+import { BlockConstructable, Route } from '../utils/Route';
 
 class Router {
   private routes: Route[] = [];
@@ -23,7 +22,7 @@ class Router {
     Router.__instance = this;
   }
 
-  public use(pathname:string, block: typeof Block) {
+  public use(pathname:string, block: BlockConstructable) {
     const route = new Route(pathname, block, this.rootQuery);
     this.routes.push(route);
     return this;

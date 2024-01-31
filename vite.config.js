@@ -5,6 +5,7 @@ import userMainForm from './src/helpers/userMainForm/userMainForm';
 import userPopup from './src/helpers/userPopup/userPopup';
 import regForm from './src/helpers/regForm/regForm';
 import ifInputError from './src/helpers/ifInputError/ifInputError';
+import getUserName from './src/helpers/getUserName/getUserName';
 
 export default defineConfig({
 
@@ -15,6 +16,7 @@ export default defineConfig({
       userPopup,
       regForm,
       ifInputError,
+      getUserName,
     },
     context: {
       currentUser: {

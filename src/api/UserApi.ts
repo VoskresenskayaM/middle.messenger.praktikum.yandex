@@ -2,8 +2,8 @@ import { BaseApi } from './BaseApi';
 import { User } from '../utils/Types';
 
 export interface DataChangePassword {
-	oldPassword: string;
-	newPassword: string;
+  oldPassword: string;
+  newPassword: string;
 }
 
 export type DataChangeProfile = {
@@ -19,7 +19,7 @@ export class UserApi extends BaseApi {
     super('/user');
   }
 
-  changeProfile(data: DataChangeProfile) { 
+  changeProfile(data: DataChangeProfile) {
     return this.http.put('/profile', { data });
   }
 
@@ -45,7 +45,7 @@ export class UserApi extends BaseApi {
 
   delete = undefined;
 
-  read  = undefined;
+  read = undefined;
 }
 
 export const userApi = new UserApi();

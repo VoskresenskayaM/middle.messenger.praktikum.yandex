@@ -1,9 +1,5 @@
 /* eslint-disable linebreak-style */
 import './src/css/style.scss';
-import { render } from './src/utils/renderDOM';
-import Link from './src/components/link/link';
-import List from './src/components/list/list';
-
 import { Page404 } from './src/pages/page404/page404';
 import { Page505 } from './src/pages/page505/page505';
 import { PageLogin } from './src/pages/pageLogin/pageLogin';
@@ -12,80 +8,46 @@ import { UserUpdate } from './src/pages/pageUserUpdate/pageUserUpdate';
 import { UserProfile } from './src/pages/pageUserProfile/pageUserProfile';
 import { UserUpdatePassword } from './src/pages/pageUpdatePassword/pageUpdatePassword';
 import { PageChatConnect } from './src/pages/pageChat/pageChat';
-import { PageChats } from './src/pages/pageChats/pageChats'
-import { BlockComponent } from './src/utils/Route';
-import { Block } from './src/utils/Block';
-import FormValidator from './src/utils/FormValidator';
-import { regFormSettings, ROUTES } from './src/utils/Constants';
 import { router } from './src/utils/Router';
 import { store } from './src/utils/Store';
-
-/* declare global {
-  interface Window {
-      page:any;
-  }
-} */
-
-/* const list = new List({
-  attr: { class: 'main__index-list' },
-  links: [
-    new Link({
-      title: 'login',
-      href: '/src/pages/login/login.html',
-    }),
-    new Link({
-      title: 'register',
-      href: '/src/pages/register/register.html',
-    }),
-    new Link({
-      title: 'userProfile',
-      href: '/src/pages/userProfile/userProfile.html',
-    }),
-    new Link({
-      title: 'userUpdate',
-      href: '/src/pages/userUpdate/userUpdate.html',
-    }),
-    new Link({
-      title: 'userPassword',
-      href: '/src/pages/updatePassword/updatePassword.html',
-    }),
-    new Link({
-      title: '404',
-      href: '/src/pages/page404/page404.html',
-    }),
-    new Link({
-      title: '505',
-      href: '/src/pages/page505/page505.html',
-    }),
-    new Link({
-      title: 'chat',
-      href: '/src/pages/chat/chat.html',
-    }),
-  ],
-});
-render('.main__index-nav', list); */
-/* window.addEventListener('DOMContentLoaded', async () => {
-  router.use('/404', pageError404);
-   router.use('/login', pageLogin as Block);
-  router.start();
-
-  router.go('/login');
-}) */
+import { ROUTES } from './src/utils/Constants';
+import { AuthController } from './src/controllers/AuthController';
 
 window.addEventListener('DOMContentLoaded', async () => {
-  router.use(ROUTES.NOT_FOUND, Page404)
-    .use(ROUTES.ERROR, Page505)
+  router.use(ROUTES.PROFILE, UserProfile)
     .use(ROUTES.SIGNIN, PageLogin)
-    .use(ROUTES.SIGNUP, PageRegister)
-    .use(ROUTES.PROFILE, UserProfile)
-    .use(ROUTES.PROFILE_EDIT_DATA, UserUpdate)
-    .use(ROUTES.PROFILE_EDIT_PASSWORD, UserUpdatePassword)
     .use(ROUTES.CHAT, PageChatConnect)
-    .use(ROUTES.CHATS, PageChats)
+    .use(ROUTES.SIGNUP, PageRegister)
+    .use(ROUTES.NOT_FOUND, Page404)
+    .use(ROUTES.ERROR, Page505)
+    .use(ROUTES.PROFILE_EDIT_DATA, UserUpdate)
+    .use(ROUTES.PROFILE_EDIT_PASSWORD, UserUpdatePassword);
 
+  let isProtectedRoute = true;
+  const authController = new AuthController();
+  await authController.fetchUser();
+  if (window.location.pathname === ROUTES.SIGNIN
+      || window.location.pathname === ROUTES.SIGNUP
+      || window.location.pathname === ROUTES.NOT_FOUND
+  ) isProtectedRoute = false;
 
-  router.start();
-// добавлять валидацию в зависимости от класса Page
-/* const valid = new FormValidator(regFormSettings);
-valid.enableValidation(); */
+  try {
+    router.start();
+
+    if (!Object.values(ROUTES).includes(window.location.pathname)) {
+      router.go(ROUTES.NOT_FOUND);
+    }
+
+    if (store.getState().isAuth && !isProtectedRoute) {
+      router.go(ROUTES.PROFILE);
+    }
+
+    if (!store.getState().isAuth && isProtectedRoute) {
+      router.go(ROUTES.SIGNIN);
+    }
+  } catch (e) {
+    router.start();
+
+    router.go(ROUTES.ERROR);
+  }
 });
