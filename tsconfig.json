@@ -21,6 +21,5 @@
       "strictNullChecks": true,
       "esModuleInterop": true
     },
-    "include": ["src", "confij.js", "globals.d.ts"],
-    "files": ["globals.d.ts"],
+    "include": ["src", "confij.js", "globals.d.ts"]
   }
