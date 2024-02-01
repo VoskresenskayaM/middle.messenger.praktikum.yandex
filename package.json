@@ -12,8 +12,7 @@
     "stylelint:fix": "stylelint '**/*{.css,.scss}' --fix",
     "start": "vite build && vite preview",
     "build": "vite build",
-    "preview": "vite preview",
-    "server": "npm run build && node ./server.js"
+    "preview": "vite preview"
   },
   "devDependencies": {
     "@stylistic/eslint-plugin-js": "^1.2.0",
