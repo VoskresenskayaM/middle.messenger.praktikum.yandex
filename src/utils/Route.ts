@@ -15,11 +15,11 @@ export class Route {
 
   private _block : Block | null = null;
 
-  public _blockClass: BlockConstructable;
+  public _blockClass: typeof Block;
 
-  constructor(pathname : string, view: BlockConstructable, props: string) {
+  constructor(pathname : string, blockClass: typeof Block, props: string) {
     this._pathname = pathname;
-    this._blockClass = view;
+    this._blockClass = blockClass;
     this._props = props;
   }
 
@@ -42,6 +42,7 @@ export class Route {
 
   render() {
     if (!this._block) {
+      // @ts-ignore
       this._block = new this._blockClass({});
       render(this._props, this._block);
     }

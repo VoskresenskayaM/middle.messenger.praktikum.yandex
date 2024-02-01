@@ -1,17 +1,17 @@
 /* eslint-disable linebreak-style */
-import './src/css/style.scss';
-import { Page404 } from './src/pages/page404/page404';
-import { Page505 } from './src/pages/page505/page505';
-import { PageLogin } from './src/pages/pageLogin/pageLogin';
-import { PageRegister } from './src/pages/pageRegister/pageRegister';
-import { UserUpdate } from './src/pages/pageUserUpdate/pageUserUpdate';
-import { UserProfile } from './src/pages/pageUserProfile/pageUserProfile';
-import { UserUpdatePassword } from './src/pages/pageUpdatePassword/pageUpdatePassword';
-import { PageChatConnect } from './src/pages/pageChat/pageChat';
-import { router } from './src/utils/Router';
-import { store } from './src/utils/Store';
-import { ROUTES } from './src/utils/Constants';
-import { AuthController } from './src/controllers/AuthController';
+import './css/style.scss';
+import { Page404 } from './pages/page404/page404';
+import { Page505 } from './pages/page505/page505';
+import { PageLogin } from './pages/pageLogin/pageLogin';
+import { PageRegister } from './pages/pageRegister/pageRegister';
+import { UserUpdate } from './pages/pageUserUpdate/pageUserUpdate';
+import { UserProfile } from './pages/pageUserProfile/pageUserProfile';
+import { UserUpdatePassword } from './pages/pageUpdatePassword/pageUpdatePassword';
+import { PageChatConnect } from './pages/pageChat/pageChat';
+import { router } from './utils/Router';
+import { store } from './utils/Store';
+import { ROUTES } from './utils/Constants';
+import { AuthController } from './controllers/AuthController';
 
 window.addEventListener('DOMContentLoaded', async () => {
   router.use(ROUTES.PROFILE, UserProfile)

@@ -163,7 +163,7 @@
     @include putcenter;
 }
 
-.chat__users_actions{
+.chat__users_actions {
     display: flex;
     flex-direction: row;
     gap:50px;
@@ -213,7 +213,7 @@
                 border-radius: 17px;
             }
 
-            .feed__contact-img-img{
+            .feed__contact-img-img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;

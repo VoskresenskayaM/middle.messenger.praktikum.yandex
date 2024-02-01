@@ -1,3 +1,5 @@
+import clip from '../../../static/images/clip.svg';
+
 export const source = `
 <div class="chats">
     {{{profileLink}}}
@@ -13,7 +15,7 @@ export const source = `
         {{{messagesList}}}
     </div>
     <div class="feed__footer">
-        <img class="feed__form-icon" src="/static/images/clip.svg" />
+        <img class="feed__form-icon" src=${clip} />
         {{{chatSendForm}}}
     </div>
     <div class="chat__users_actions">
