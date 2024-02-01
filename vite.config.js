@@ -10,7 +10,7 @@ export default defineConfig({
   },
   root: resolve(__dirname, './src'),
   publicDir: './static',
-  server: {
+  preview: {
     port: 3000,
   },
 
