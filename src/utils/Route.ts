@@ -42,7 +42,7 @@ export class Route {
 
   render() {
     if (!this._block) {
-      // @ts-ignore
+      // @ts-expect-error
       this._block = new this._blockClass({});
       render(this._props, this._block);
     }
