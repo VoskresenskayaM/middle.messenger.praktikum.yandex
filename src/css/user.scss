@@ -224,3 +224,19 @@
 .user__avatar-active {
     display: flex;
 }
+
+.user__delete-button {
+    display: none;
+    width: 280px;
+    height: 37px;
+    background-color: $blue;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+
+    @include font(13px, 500, 13px, $white);
+}
+
+.user__delete-button_active {
+    display: block;
+}

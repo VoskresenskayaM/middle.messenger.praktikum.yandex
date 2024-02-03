@@ -13,6 +13,9 @@ export default defineConfig({
   preview: {
     port: 3000,
   },
+  server: {
+    port: 3000,
+  },
 
   /* root: resolve(__dirname, './src'),
   build: {

@@ -8,7 +8,7 @@ import { ChatsListConnect } from '../../components/chatComponents/chatsArr/chats
 import { chatController } from '../../controllers/ChatController';
 import { StoreState, connect, store } from '../../utils/Store';
 import { AddChatForm } from '../../components/chatComponents/addChatForm/addChatForm';
-import { ChatHeader } from '../../components/chatComponents/chatHeader/chatHeader';
+import { ChatHeaderConnect } from '../../components/chatComponents/chatHeader/chatHeader';
 import { AddUserFormConnect } from '../../components/chatComponents/addUserForm/addUserForm';
 import ButtonTest from '../../components/test_sprint_2_button/ButtonTest';
 import ChatSendForm from '../../components/chatComponents/chatSendForm/chatSendForm';
@@ -74,7 +74,7 @@ export class PageChat extends Block {
       },
     });
 
-    this._children.chatHeader = new ChatHeader('div', { attr: { class: 'feed__contact' } });
+    this._children.chatHeader = new ChatHeaderConnect('div', { attr: { class: 'feed__contact' } });
     this._children.messagesList = new ChatMessagesListConnect('div', { attr: { class: 'feed__all-messages' } });
     this.loadChats().then(() => {});
   }

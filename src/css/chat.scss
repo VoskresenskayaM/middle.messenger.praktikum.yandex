@@ -237,6 +237,7 @@
         justify-content: flex-start;
         width: 95%;
         height: 100%;
+        overflow-y: scroll;
 
         .feed__all-date {
             @include font(12px, 00, 12px, $text-light-gray);

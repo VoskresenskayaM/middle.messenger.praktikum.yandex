@@ -48,11 +48,11 @@ const currentUser = {
 };
 
 const ROUTES = {
-  CHAT: '/',
-  SIGNIN: '/signin',
-  SIGNUP: '/signup',
+  CHAT: '/messenger',
+  SIGNIN: '/',
+  SIGNUP: '/sign-up',
   PROFILE: '/profile',
-  PROFILE_EDIT_DATA: '/edit-data',
+  PROFILE_EDIT_DATA: '/settings',
   PROFILE_EDIT_PASSWORD: '/edit-password',
   ERROR: '/error',
   NOT_FOUND: '/404',

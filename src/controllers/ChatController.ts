@@ -91,6 +91,19 @@ class ChatController {
       console.error(error);
     }
   }
+
+  async removeUserFromChat(data: { users: number[], chatId: number }) {
+    try {
+      await this._api.removeUserFromChat(data);
+      const { chatUsers } = store.getState();
+      const newChats = chatUsers?.filter((item) => item.id !== data.users[0]);
+      store.set('deleteUserId', 0);
+      store.set('chatUsers', newChats);
+    } catch (error) {
+      /* eslint-disable-next-line no-console */
+      console.error(error);
+    }
+  }
 }
 
 export const chatController = new ChatController();

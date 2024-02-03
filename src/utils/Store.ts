@@ -23,7 +23,8 @@ export type StoreState = {
     chatToken: string,
     chatUsers: ChatsUser[],
     messages: Message[],
-    socket: ChatWS | null
+    socket: ChatWS | null,
+    deleteUserId: number
   };
 
 class Store extends EventBus {
@@ -46,6 +47,7 @@ class Store extends EventBus {
     chatToken: '',
     messages: [],
     socket: null,
+    deleteUserId: 0,
   };
 
   public set(path: string, newState: unknown) {
