@@ -1,11 +1,4 @@
-enum METHODS {
-    Get = 'GET',
-    Put = 'PUT',
-    Post = 'POST',
-    Delete = 'DELETE'
-}
-
-const TIMEOUT = 5000;
+import { BASE_URL } from './Constants';
 
 function queryStringify(data: Record<string, unknown>) {
   const getQueryStr = Object.keys(data)
@@ -14,77 +7,116 @@ function queryStringify(data: Record<string, unknown>) {
   return `?${getQueryStr}`;
 }
 
-type Options = {
-    data?: any;
-    method?: METHODS;
-    timeout?: number;
-    headers?: Record<string, string>;
+enum HTTPTransportMethods {
+  Get = 'GET',
+  Put = 'PUT',
+  Post = 'POST',
+  Delete = 'DELETE',
+}
+const TIMEOUT = 5000;
+
+type HTTPTransportOptions<D> = {
+  data: D;
+  method: HTTPTransportMethods;
+  timeout?: number;
+  headers?: Headers;
+  withCredentials?: boolean;
 };
 
-type HTTPMethod = (
-    url: string,
-    options?: Options,
-) => Promise<XMLHttpRequest | unknown>;
+type HTTPTransportMethod = <R, D = unknown>(
+  url: string,
+  options?: Partial<HTTPTransportOptions<D>>,
+) => Promise<R>;
 
-class HTTPTransport {
-  constructor() {
+export class HTTPTransport {
+  static BASE_URL = BASE_URL;
+
+  static RESOURCE_URL = `${HTTPTransport.BASE_URL}/resources`;
+
+  protected endpoint: string;
+
+  constructor(endpoint: string) {
     this.request = this.request.bind(this);
+    this.endpoint = `${HTTPTransport.BASE_URL}${endpoint}`;
   }
 
-  get: HTTPMethod = (url, options = {}) => {
-    const { data } = options;
-    let urlResalt = url;
+  get: HTTPTransportMethod = (url = '/', options = { timeout: TIMEOUT }) => {
+    let urlWithSearchParams = this.endpoint + url;
+
     if (options.data) {
-      urlResalt += queryStringify(data);
+      urlWithSearchParams += queryStringify(options.data);
     }
-    return this.request(urlResalt, { ...options, method: METHODS.Get });
+
+    return this.request(urlWithSearchParams, {
+      ...options,
+      method: HTTPTransportMethods.Get,
+    });
   };
 
-  post: HTTPMethod = (url, options = {}) => this.request(
+  post: HTTPTransportMethod = (url, options = { timeout: TIMEOUT }) => this.request(this.endpoint + url, {
+    ...options,
+    method: HTTPTransportMethods.Post,
+  });
+
+  put: HTTPTransportMethod = (url, options = { timeout: TIMEOUT }) => this.request(this.endpoint + url, {
+    ...options,
+    method: HTTPTransportMethods.Put,
+  });
+
+  delete: HTTPTransportMethod = (url, options = { timeout: TIMEOUT }) => this.request(this.endpoint + url, {
+    ...options,
+    method: HTTPTransportMethods.Delete,
+  });
+
+  request: HTTPTransportMethod = (
     url,
-    { ...options, method: METHODS.Post },
-  );
+    options = {
+      method: HTTPTransportMethods.Get,
+      timeout: TIMEOUT,
+    },
+  ) => new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    const {
+      method = HTTPTransportMethods.Get,
+      data,
+      headers,
+      timeout = TIMEOUT,
+      withCredentials = true,
+    } = options;
 
-  put: HTTPMethod = (url, options = {}) => this.request(
-    url,
-    { ...options, method: METHODS.Put },
-  );
+    xhr.open(method, url);
 
-  delete: HTTPMethod = (url, options = { timeout: TIMEOUT }) => this.request(
-    url,
-    { ...options, method: METHODS.Delete },
-  );
+    if (headers !== undefined) {
+      Object.entries(headers).forEach(([key, value]) => {
+        xhr.setRequestHeader(key, value);
+      });
+    }
 
-  request(url: string, options: Options = { timeout: TIMEOUT }) {
-    const { method, data, headers } = options;
+    xhr.timeout = timeout;
+    xhr.withCredentials = withCredentials;
+    xhr.responseType = 'json';
 
-    return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-      if (!method) {
-        reject(new Error('No method'));
-        return;
+    xhr.onreadystatechange = function onReadyStateChange() {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status < 400) {
+          resolve(xhr.response);
+        } else {
+          reject(xhr.response);
+        }
       }
-      xhr.open(method, url);
-      if (headers !== undefined) {
-        Object.entries(headers).forEach(([key, value]) => {
-          xhr.setRequestHeader(key, value);
-        });
-      }
+    };
+    xhr.onabort = () => reject(new Error('abort'));
+    xhr.ontimeout = () => reject(new Error('timeout'));
+    xhr.onerror = () => reject(new Error('error'));
 
-      xhr.onload = () => {
-        resolve(xhr);
-      };
-
-      xhr.onabort = reject;
-      xhr.onerror = reject;
-      xhr.ontimeout = reject;
-
-      if (method === METHODS.Get || !data) {
-        xhr.send();
-      } else {
-        xhr.send(JSON.stringify(data));
-      }
-    });
-  }
+    if (method === HTTPTransportMethods.Get || !data) {
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.send();
+    } else if (data instanceof FormData) {
+      xhr.send(data);
+    } else {
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.send(JSON.stringify(data));
+    }
+  });
 }
-export const transport = new HTTPTransport();

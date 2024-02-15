@@ -5,7 +5,7 @@
       "module": "ESNext",
       "lib": ["ES2020", "DOM", "DOM.Iterable"],
       "skipLibCheck": true,
-  
+ 
       "moduleResolution": "bundler",
       "allowImportingTsExtensions": true,
       "resolveJsonModule": true,
@@ -18,7 +18,8 @@
       "noUnusedLocals": true,
       "noUnusedParameters": true,
       "sourceMap": true,
-      "strictNullChecks": true
+      "strictNullChecks": true,
+      "esModuleInterop": true
     },
-    "include": ["src"]
+    "include": ["src", "confij.js", "globals.d.ts"]
   }

@@ -1,8 +1,10 @@
 import { v4 as makeUUID } from 'uuid';
 import Handlebars from 'handlebars';
 import EventBus from './EventBus';
+import FormValidator from './FormValidator';
+import isEqual from './isEqual';
 
-export abstract class Block<Props extends Record<string, any> = any> {
+export class Block<Props extends Record<string, any> = any> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -12,19 +14,21 @@ export abstract class Block<Props extends Record<string, any> = any> {
 
   public _props : Props;
 
-  private _children;
+  public _children;
 
   public _id;
 
-  private _lists;
+  protected _lists;
 
   private _element: HTMLElement | null = null;
 
-  private _meta;
+  protected _meta;
 
   private _eventBus;
 
-  /* private _setUpdate = false; */
+  protected _validator : FormValidator| null = null;
+
+  private _setUpdate = false;
 
   constructor(tagName: string, propsAndChildren : Props) {
     const { children, props, lists } = this._getChildren(propsAndChildren || {});
@@ -43,19 +47,18 @@ export abstract class Block<Props extends Record<string, any> = any> {
   }
 
   private _registerEvents() {
-    this._eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
+    this._eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     this._eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     this._eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     this._eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
-  /* _init() {
+  protected init() {}
+
+  private _init() {
     this.init();
-    this._eventBus().emit(Block.EVENTS.FLOW_RENDER);
-  } */
-  protected init() {
     this._createResources();
-    this._eventBus.emit(Block.EVENTS.FLOW_CDM);
+    this._eventBus.emit(Block.EVENTS.FLOW_RENDER);
   }
 
   private _createResources() {
@@ -71,6 +74,7 @@ export abstract class Block<Props extends Record<string, any> = any> {
 
   private _componentDidMount() {
     this.componentDidMount();
+    this._eventBus.emit(Block.EVENTS.FLOW_RENDER);
     Object.values(this._children).forEach((child: any) => {
       child.dispatchComponentDidMount();
     });
@@ -78,36 +82,48 @@ export abstract class Block<Props extends Record<string, any> = any> {
 
   // Может переопределять пользователь, необязательно трогать
   protected componentDidMount() {
-    this._eventBus.emit(Block.EVENTS.FLOW_RENDER);
   }
 
   public dispatchComponentDidMount() {
     this._eventBus.emit(Block.EVENTS.FLOW_CDM);
+    if (Object.values(this._children).length) {
+      this._eventBus.emit(Block.EVENTS.FLOW_RENDER);
+    }
+    if (Object.entries(this._lists).length) {
+      this._eventBus.emit(Block.EVENTS.FLOW_RENDER);
+    }
+  }
+
+  protected isPropsUpdate(prevProps: Props, nextProps: Props): boolean {
+    if (typeof prevProps === 'object' && typeof nextProps === 'object') {
+      return !isEqual(prevProps, nextProps);
+    }
+
+    return prevProps !== nextProps;
   }
 
   private _componentDidUpdate(
     oldProps: Props,
     newProps: Props,
   ) {
-    const response = this.componentDidUpdate(oldProps, newProps);
-    if (!response) {
-      return;
+    const differentProps = this.isPropsUpdate(oldProps, newProps);
+    if (differentProps) {
+      this.componentDidUpdate();
+      this._eventBus.emit(Block.EVENTS.FLOW_RENDER);
     }
-    this._eventBus.emit(Block.EVENTS.FLOW_RENDER);
   }
 
   // Может переопределять пользователь, необязательно трогать
-  protected componentDidUpdate(
-    oldProps: Props,
-    newProps: Props,
-  ) {
-    return oldProps !== undefined && newProps !== undefined;
+  protected componentDidUpdate() {
   }
 
-  public setProps = (nextProps: Props) => {
+  public setProps(nextProps: Props) {
     if (!nextProps) {
       return;
     }
+    this._setUpdate = false;
+    const oldValue = { ...this._props };
+
     const { children, props, lists } = this._getChildren(nextProps);
 
     if (Object.values(props).length) { Object.assign(this._props, props); }
@@ -115,7 +131,12 @@ export abstract class Block<Props extends Record<string, any> = any> {
     if (Object.values(children).length) { Object.assign(this._children, children); }
 
     if (Object.values(lists).length) { Object.assign(this._lists, lists); }
-  };
+
+    if (this._setUpdate) {
+      this._eventBus.emit(Block.EVENTS.FLOW_CDM, oldValue, this._props);
+      this._setUpdate = false;
+    }
+  }
 
   get element() {
     return this._element;
@@ -176,10 +197,12 @@ export abstract class Block<Props extends Record<string, any> = any> {
         return typeof value === 'function' ? value.bind(target) : value;
       },
       set(target, prop: string, value: unknown) {
-        // eslint-disable-next-line no-param-reassign
-        target[prop] = value;
-
-        self._eventBus.emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
+        if (target[prop] !== value) {
+          // eslint-disable-next-line no-param-reassign
+          target[prop] = value;
+          self._setUpdate = true;
+        }
+        /* self._eventBus.emit(Block.EVENTS.FLOW_CDU, { ...target }, target); */
         return true;
       },
       deleteProperty() {
@@ -250,4 +273,6 @@ export abstract class Block<Props extends Record<string, any> = any> {
     if (!content) return;
     content.style.display = 'none';
   }
+
+  public validateForm() {}
 }

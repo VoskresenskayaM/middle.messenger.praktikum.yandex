@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --open -d --force",
     "prebuild": "tsc --noEmit",
     "lint": "npx eslint \"src/**\" && tsc --noEmit",
     "lintFix": "eslint --fix --ext .js,.ts .",
@@ -12,8 +12,7 @@
     "stylelint:fix": "stylelint '**/*{.css,.scss}' --fix",
     "start": "vite build && vite preview",
     "build": "vite build",
-    "preview": "vite preview",
-    "server": "npm run build && node ./server.js"
+    "preview": "vite preview"
   },
   "devDependencies": {
     "@stylistic/eslint-plugin-js": "^1.2.0",
