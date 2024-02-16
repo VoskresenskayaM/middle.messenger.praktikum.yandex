@@ -17,6 +17,8 @@
   },
   "devDependencies": {
     "@stylistic/eslint-plugin-js": "^1.2.0",
+    "@types/jsdom": "^21.1.6",
+    "@types/sinon": "^17.0.3",
     "@types/uuid": "^9.0.7",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.11.0",
@@ -26,6 +28,7 @@
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-prettier": "^5.0.1",
     "express": "^4.18.2",
+    "mocha": "^10.3.0",
     "prettier": "^3.1.0",
     "sass": "^1.69.4",
     "stylelint": "^15.11.0",
@@ -40,10 +43,17 @@
     "node": ">=v19.3.0"
   },
   "dependencies": {
+    "@types/chai": "^4.3.11",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.11.17",
+    "chai": "^5.1.0",
     "handlebars": "^4.7.8",
     "hbs": "^4.2.0",
+    "jsdom": "^24.0.0",
     "normalize.css": "^8.0.1",
+    "sinon": "^17.0.1",
     "stylelint-config-standard-scss": "^11.1.0",
+    "ts-node": "^10.9.2",
     "uuid": "^9.0.1",
     "vite-plugin-handlebars": "^1.6.0"
   }
