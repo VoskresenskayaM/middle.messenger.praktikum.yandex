@@ -11,7 +11,7 @@ interface Props {
   error: string
 }
 
-export default class UserInput extends Block {
+export class UserInput extends Block {
   constructor(props:Props) {
     super('div', props);
   }

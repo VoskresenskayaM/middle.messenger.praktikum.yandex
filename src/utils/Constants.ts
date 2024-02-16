@@ -1,3 +1,6 @@
+const BASE_URL = 'https://ya-praktikum.tech/api/v2';
+const CHATS_URL = 'wss://ya-praktikum.tech/ws/chats';
+
 const regFormSettings = {
   formSelector: '.login__form',
   buttonSelector: '.user__form-button',
@@ -24,6 +27,7 @@ const formErrorReg = {
   login: '^(?=[A-Za-z0-9-_])(?=.*\\D)[A-Za-z0-9-_]{3,20}$',
   phone: '^((8|\\+7)[\\-\\s]?)?(\\(?\\d{3}\\)?[\\-\\s]?)?[\\d\\-\\s]{7,10}$',
   message: '\\w+$',
+  file: '^[A-Za-z]{1,8}\\.[A-Za-z]{1,3}$',
 };
 
 const formErrorMessage = {
@@ -31,6 +35,7 @@ const formErrorMessage = {
   passwordError: 'неверный формат пароля',
   nameError: 'неверный формат имени',
   phoneError: 'неверный формат телефона',
+  fileError: 'неверный формат файла',
 };
 
 const currentUser = {
@@ -42,10 +47,24 @@ const currentUser = {
   phone: '+7(909)-967-30-30',
 };
 
+const ROUTES = {
+  CHAT: '/messenger',
+  SIGNIN: '/',
+  SIGNUP: '/sign-up',
+  PROFILE: '/profile',
+  PROFILE_EDIT_DATA: '/settings',
+  PROFILE_EDIT_PASSWORD: '/edit-password',
+  ERROR: '/error',
+  NOT_FOUND: '/404',
+};
+
 export {
+  BASE_URL,
+  CHATS_URL,
   regFormSettings,
   formErrorReg,
   formErrorMessage,
   currentUser,
   userFormSettings,
+  ROUTES,
 };

@@ -8,7 +8,7 @@ interface Props {
   inputValue: string
 }
 
-export default class UserInputDisabled extends Block {
+export class UserInputDisabled extends Block {
   constructor(props:Props) {
     super('div', props);
   }

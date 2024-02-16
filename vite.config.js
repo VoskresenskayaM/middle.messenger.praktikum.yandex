@@ -1,54 +1,36 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import handlebars from 'vite-plugin-handlebars';
-import userMainForm from './src/helpers/userMainForm/userMainForm';
-import userPopup from './src/helpers/userPopup/userPopup';
-import regForm from './src/helpers/regForm/regForm';
-import ifInputError from './src/helpers/ifInputError/ifInputError';
 
 export default defineConfig({
 
-  plugins: [handlebars({
-    partialDirectory: resolve(__dirname, 'src/partials'),
-    helpers: {
-      userMainForm,
-      userPopup,
-      regForm,
-      ifInputError,
-    },
-    context: {
-      currentUser: {
-        login: 'ivanivanov',
-        email: 'pochta@yandex.ru',
-        first_name: 'Иван',
-        second_name: 'Иванов',
-        display_name: 'Иван',
-        phone: '+7(909)-967-30-30',
-      },
-      isOpenPopup: false,
-      isError: false,
-    },
-  })],
-
+  plugins: [handlebars()],
   build: {
-    rollupOptions: {
-      input: {
-        main: resolve(__dirname, 'index.html'),
-        login: resolve(__dirname, 'src/pages/login/login.html'),
-        chat: resolve(__dirname, 'src/pages/chat/chat.html'),
-        userProfile: resolve(__dirname, 'src/pages/userProfile/userProfile.html'),
-        userUpdate: resolve(__dirname, 'src/pages/userUpdate/userUpdate.html'),
-        updatePassword: resolve(__dirname, 'src/pages/updatePassword/updatePassword.html'),
-        register: resolve(__dirname, 'src/pages/register/register.html'),
-        page404: resolve(__dirname, 'src/pages/page404/page404.html'),
-        page505: resolve(__dirname, 'src/pages/page505/page505.html'),
-      },
-    },
+    outDir: resolve(__dirname, 'dist'),
+  },
+  root: resolve(__dirname, './src'),
+  publicDir: './static',
+  preview: {
+    port: 3000,
   },
   server: {
     port: 3000,
   },
-  preview: {
+
+  /* root: resolve(__dirname, './src'),
+  build: {
+    outDir: resolve(__dirname, 'dist'),
+    emptyOutDir: true,
+},
+root: resolve(__dirname, './src'),
+   publicDir: './static',
+  server: {
     port: 3000,
   },
+  optimizeDeps: {
+    dynamicImport: true,
+  },
+  preview: {
+    port: 3000,
+  }, */
 });

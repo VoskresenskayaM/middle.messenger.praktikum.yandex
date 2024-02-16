@@ -3,12 +3,12 @@ import { source } from './source';
 
 interface Props {
   attr: Record<string, string>,
-inputEmail: Block,
+inputEmail?: Block,
 inputLogin: Block,
 inputFirstname?: Block,
 inputSecondname?: Block,
 inputPhone?: Block,
-inputPassword?: Block,
+inputPassword: Block,
 inputPassword2?: Block,
 button : Block,
 }
