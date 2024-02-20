@@ -5,6 +5,10 @@ import FormValidator from './FormValidator';
 import isEqual from './isEqual';
 
 export class Block<Props extends Record<string, any> = any> {
+  static getContent(): any {
+    throw new Error('Method not implemented.');
+  }
+
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -20,7 +24,7 @@ export class Block<Props extends Record<string, any> = any> {
 
   protected _lists;
 
-  private _element: HTMLElement | null = null;
+  public _element: HTMLElement | null = null;
 
   protected _meta;
 

@@ -12,7 +12,9 @@
     "stylelint:fix": "stylelint '**/*{.css,.scss}' --fix",
     "start": "vite build && vite preview",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "husky && husky install",
+    "test": "mocha"
   },
   "devDependencies": {
     "@stylistic/eslint-plugin-js": "^1.2.0",
@@ -27,6 +29,8 @@
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-prettier": "^5.0.1",
     "express": "^4.18.2",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.2.2",
     "mocha": "^10.3.0",
     "prettier": "^3.1.0",
     "sass": "^1.69.4",
@@ -48,6 +52,7 @@
     "chai": "^5.1.0",
     "handlebars": "^4.7.8",
     "hbs": "^4.2.0",
+    "husky": "^9.0.11",
     "jsdom": "^24.0.0",
     "normalize.css": "^8.0.1",
     "sinon": "^17.0.1",
@@ -55,5 +60,9 @@
     "ts-node": "^10.9.2",
     "uuid": "^9.0.1",
     "vite-plugin-handlebars": "^1.6.0"
-  }
+  },
+  "lint-staged" : {
+    "**/*.{js,jsx,ts,tsx}" : [
+      "npx eslint --fix"
+    ]}
 }

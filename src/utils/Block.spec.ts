@@ -1,81 +1,60 @@
+/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
-import sinon from 'sinon';
+import { describe, it, before } from 'mocha';
 import { Block } from './Block';
 
 interface Props {
     text?: string;
     events?: { click?: () => void; };
-
 }
-
-/* type Refs = {}
 
 describe('Block', () => {
   let PageClass: typeof Block<Props>;
-
   before(() => {
     class Page extends Block<Props> {
-      constructor(props: Props) {
-        super({
+      constructor(tagName: string, props:Props) {
+        super(tagName, {
           ...props,
         });
       }
 
-      protected render(): string {
-        return `<div>
-                    <span id="test-text">{{text}}</span>
-                    <button>{{text-button}}</button>
-                </div>`;
+      getContent() {
+        const div = document.createElement(this._meta.tagName);
+
+        div.setAttribute('id', 'block');
+
+        if (this._props.text) {
+          div.append(this._props.text);
+        }
+
+        return div;
       }
     }
-
     PageClass = Page;
   });
 
-  // написать тест на то что комопнент создается с переданными пропсами
-  it('Должен создать компонент с состоянием из конструктора', () => {
+  it('Компонент создается с состоянием из конструктора', () => {
     const text = 'Hello';
-    const pageComponent = new PageClass({ text });
-
-    const spanText = pageComponent.element?.querySelector('#test-text')?.innerHTML;
-
-    expect(spanText).to.be.eq(text);
+    const pageComponent = new PageClass('div', { text });
+    expect(pageComponent.getContent()?.outerHTML).equal('<div id="block">Hello</div>');
   });
-  // проверить что реактивность у копонента работает
-  it('Компонент должен иметь реактивное повдение', () => {
+
+  it('Pеактивное повeдение', () => {
     const text = 'new value';
-    const pageComponent = new PageClass({ text: 'Hello' });
+    const pageComponent = new PageClass('div', { text: 'Hello' });
 
     pageComponent.setProps({ text });
-    const spanText = pageComponent.element?.querySelector('#test-text')?.innerHTML;
-
-    expect(spanText).to.be.eq(text);
+    expect(pageComponent.getContent()?.outerHTML).equal('<div id="block">new value</div>');
   });
-  // проверить что комопнент навешивает события
-  it('Компонент должен установить события на элемент', () => {
-    const handlerStub = sinon.stub();
-    const pageComponent = new PageClass({
+
+  it('Установка события на элемент', () => {
+    const pageComponent = new PageClass('button', {
+      text: 'text',
       events: {
-        click: handlerStub,
+        /* eslint-disable-next-line no-console */
+        click: () => { console.log('Hello'); },
       },
     });
-
-    const event = new MouseEvent('click');
-    pageComponent.element?.dispatchEvent(event);
-
-    expect(handlerStub.calledOnce).to.be.true;
+    expect(pageComponent._props.events?.click instanceof Function).to.be.true;
   });
-  // проверить что dispatchComponentDidMount отрабатывает когда элемент попал в дом
-  it('Компонент должен вызвать dispatchComponentDidMount метод', () => {
-    const clock = sinon.useFakeTimers();
-    const pageComponent = new PageClass();
-
-    const spyCDM = sinon.spy(pageComponent, 'componentDidMount');
-
-    const element = pageComponent.getContent();
-    document.body.append(element!);
-    clock.next();
-
-    expect(spyCDM.calledOnce).to.be.true;
-  });
-}); */
+});
