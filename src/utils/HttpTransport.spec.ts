@@ -68,7 +68,7 @@ describe('HTTPTransport', () => {
     };
 
     instance.get('/', {
-      // @ts-ignore
+      // @ts-expect-error
       headers,
     });
 
