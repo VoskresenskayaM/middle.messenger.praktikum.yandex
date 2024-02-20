@@ -16,7 +16,7 @@ describe('HTTPTransport', () => {
   beforeEach(() => {
     xhr = sinon.useFakeXMLHttpRequest();
 
-    // @ts-expect-error
+    // @ts-expect-error for create global
     global.XMLHttpRequest = xhr;
 
     xhr.onCreate = (req) => {
@@ -68,7 +68,7 @@ describe('HTTPTransport', () => {
     };
 
     instance.get('/', {
-      // @ts-expect-error
+      // @ts-expect-error for create headers
       headers,
     });
 
