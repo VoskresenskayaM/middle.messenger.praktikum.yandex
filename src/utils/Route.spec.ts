@@ -10,13 +10,10 @@ import { Route } from './Route';
 describe('Route', () => {
   let block: Block<{}>;
   let route: Route;
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  let querySelectorStub: sinon.SinonStub<[selectors: string], Element | null>;
 
   beforeEach(() => {
     block = new Block('div', {});
     route = new Route('/path', Block, '#app');
-    querySelectorStub = sinon.stub(document, 'querySelector').returns(document.createElement('div'));
   });
 
   afterEach(() => {
