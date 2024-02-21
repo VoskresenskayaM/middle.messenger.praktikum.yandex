@@ -26,6 +26,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   let isProtectedRoute = true;
   const authController = new AuthController();
   await authController.fetchUser();
+
   if (window.location.pathname === ROUTES.SIGNIN
       || window.location.pathname === ROUTES.SIGNUP
       || window.location.pathname === ROUTES.NOT_FOUND
