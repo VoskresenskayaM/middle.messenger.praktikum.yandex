@@ -1,4 +1,4 @@
-import clip from '../../../static/images/clip.svg';
+import clip from '../../../public/images/clip.svg';
 
 export const source = `
 <div class="chats">

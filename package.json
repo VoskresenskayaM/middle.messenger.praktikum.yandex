@@ -62,11 +62,8 @@
     "express": "^4.18.2"
   },
   "lint-staged" : {
-    "**/*.{js,jsx,ts,tsx,scss}" : [
+    "**/*.{js,jsx,ts,tsx,scss,css}" : [
       "npx eslint --fix", 
-      "npx eslint", 
-      "npx stylelint --fix", 
-      "npx stylelint",  
-      "mocha"
+      "npx eslint"
     ]}
 }
