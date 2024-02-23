@@ -21,5 +21,10 @@
       "strictNullChecks": true,
       "esModuleInterop": true
     },
+    "ts-node": {
+      "esm": true,
+      "experimentalSpecifierResolution": "node",
+      "transpileOnly": true
+    },
     "include": ["src", "confij.js", "globals.d.ts"]
   }

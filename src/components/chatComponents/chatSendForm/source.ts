@@ -1,4 +1,4 @@
-import find from '../../../../static/images/find.svg';
+import find from '../../../../public/images/find.svg';
 
 export const source = `
            <input type="text" placeholder="Сообщение" name="search" class="feed__form-input">

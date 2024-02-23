@@ -1,7 +1,7 @@
 import { Route } from '../utils/Route';
 import { Block } from './Block';
 
-class Router {
+export class Router {
   private routes: Route[] = [];
 
   // eslint-disable-next-line no-use-before-define

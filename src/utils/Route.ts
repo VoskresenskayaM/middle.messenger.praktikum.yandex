@@ -42,8 +42,7 @@ export class Route {
 
   render() {
     if (!this._block) {
-      // @ts-expect-error for create _blockClass
-      this._block = new this._blockClass({});
+      this._block = new this._blockClass('', {});
       render(this._props, this._block);
     }
   }

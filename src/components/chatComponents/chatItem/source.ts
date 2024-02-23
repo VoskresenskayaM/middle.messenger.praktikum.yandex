@@ -1,4 +1,4 @@
-import person from '../../../../static/images/person.svg';
+import person from '../../../../public/images/person.svg';
 
 export const source = `
 {{#if avatar}}
